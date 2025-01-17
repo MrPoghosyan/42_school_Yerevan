@@ -1,75 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 11:58:09 by vapoghos          #+#    #+#             */
+/*   Updated: 2024/12/17 12:30:55 by vapoghos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-int str_len(char *str)
+int	str_len(char *str)
 {
-    int len = 0;
-    while (str[len] != '\0')
-    {
-        len++;
-    }
-    return len;
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
 
-int get_total_len(int size, char **strs, char *sep)
+int	get_total_len(int size, char **strs, char *sep)
 {
-    int total_len = 0;
-    while (size-- > 0)
-    {
-        total_len += str_len(*strs++);
-        if (size > 0)
-        {
-            total_len += str_len(sep);
-        }
-    }
-    return total_len;
+	int	total_len;
+	int	i;
+
+	total_len = 0;
+	i = 0;
+	while (i < size)
+	{
+		total_len += str_len(strs[i]);
+		if (i < size - 1)
+			total_len += str_len(sep);
+		i++;
+	}
+	return (total_len);
 }
 
-void copy_string(char *result, char *str, int *index)
+void	copy_strs(int size, char **strs, char *sep, char *result)
 {
-    int j = 0;
-    while (str[j] != '\0')
-    {
-        result[(*index)++] = str[j++];
-    }
+	int	i;
+	int	j;
+	int	k;
+	int	index;
+
+	i = 0;
+	index = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (strs[i][j])
+			result[index++] = strs[i][j++];
+		if (i < size - 1)
+		{
+			k = 0;
+			while (sep[k])
+				result[index++] = sep[k++];
+		}
+		i++;
+	}
+	result[index] = '\0';
 }
 
-char *ft_strjoin(int size, char **strs, char *sep)
+char	*allocate_result(int total_len)
 {
-    if (size == 0)
-    {
-        char *empty_str = malloc(1);
-        if (!empty_str)
-        {
-            return NULL;
-        }
-        empty_str[0] = '\0';
-        return empty_str;
-    }
+	char	*result;
 
-    int total_len;
-    total_len = get_total_len(size, strs, sep);
-    char *result = malloc(total_len + 1);
-    if (!result)
-    {
-        return NULL;
-    }
+	result = malloc(total_len + 1);
+	if (!result)
+		return (NULL);
+	return (result);
+}
 
-    int index = 0;
-    while (size-- > 0)
-    {
-        copy_string(result, *strs++, &index);
-        if (size > 0)
-        {
-            int k = 0;
-            while (sep[k] != '\0')
-            {
-                result[index++] = sep[k++];
-            }
-        }
-    }
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		total_len;
 
-    result[index] = '\0';
-    return result;
+	if (size == 0)
+	{
+		result = malloc(1);
+		if (!result)
+			return (NULL);
+		result[0] = '\0';
+		return (result);
+	}
+	total_len = get_total_len(size, strs, sep);
+	result = allocate_result(total_len);
+	if (!result)
+		return (NULL);
+	copy_strs(size, strs, sep, result);
+	return (result);
 }
 /*
 #include <stdio.h>
