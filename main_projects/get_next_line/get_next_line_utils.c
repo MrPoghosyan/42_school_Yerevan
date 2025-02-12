@@ -41,6 +41,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*result;
 	char	*cop_result;
+	char	*temp;
 
 	result = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!result)
@@ -48,36 +49,34 @@ char	*ft_strjoin(char *s1, char const *s2)
 	cop_result = result;
 	if (s1)
 	{
+		temp = s1;
 		while (*s1)
 			*cop_result++ = *s1++;
-		free(s1);
+		free(temp);
 	}
-	if (s2)
-		while (*s2)
-			*cop_result++ = *s2++;
+	while (*s2)
+		*cop_result++ = *s2++;
 	*cop_result = '\0';
 	return (result);
 }
 
-char	*extract_line(const char *remainder)
+char	*extract_line(char *remainder)
 {
 	char	*extract;
 	char	*result;
 	size_t	len;
 
-	if (!remainder)
-		return (NULL);
 	len = 0;
-	while (remainder[len] && remainder[len] != '\n')
+	while (*(remainder + len) && *(remainder + len) != '\n')
 		++len;
-	extract = malloc(len + (*(remainder + len) == '\n') + 1);
+	if (*(remainder + len) == '\n')
+		++len;
+	extract = (char *)malloc((len + 1) * sizeof(char));
 	if (!extract)
 		return (NULL);
 	result = extract;
 	while (len--)
 		*extract++ = *remainder++;
-	if (*remainder == '\n')
-		*extract++ = *remainder;
 	*extract = '\0';
 	return (result);
 }
@@ -95,16 +94,16 @@ char	*save_remainder(char *remainder)
 		free(remainder);
 		return (NULL);
 	}
-	len = ft_strlen(newline);
-	str = (char *)malloc(len * sizeof(char));
-	new_remainder = NULL;
-	if (str)
-	{
-		new_remainder = str;
-		while (*newline++)
-			*str++ = *newline;
-		*str = '\0';
-	}
+	len = ft_strlen(newline +1);
+	str = (char *)malloc((len +1) * sizeof(char));
+	if (!str)
+		return (free(remainder), NULL);
+	new_remainder = str;
+	if (*newline == '\n')
+		newline++;
+	while (*newline)
+		*str++ = *newline++;
+	*str = '\0';
 	free(remainder);
 	return (new_remainder);
 }

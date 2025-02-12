@@ -24,7 +24,7 @@ char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, const char *s2);
-char	*extract_line(const char *remainder);
+char	*extract_line(char *remainder);
 char	*save_remainder(char *remainder);
 
 #endif

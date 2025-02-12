@@ -16,25 +16,28 @@ char	*get_next_line(int fd)
 {
 	static char	*remainder;
 	char		*line;
-	char		buffer[BUFFER_SIZE + 1];
+	char		*buffer;
 	ssize_t		bytes_read;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, buffer, 0) < 0))
+	buffer = (char *)malloc((BUFFER_SIZE +1) * sizeof(char));
+	if (!buffer)
 		return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, buffer, 0) < 0))
+		return (free(buffer), NULL);
 	bytes_read = 1;
-	while (!ft_strchr(remainder, '\n') && bytes_read > 0)
+	while (!ft_strchr(remainder, '\n') && bytes_read != 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read < 0)
-			return (NULL);
+		if (bytes_read == -1)
+			return (free(buffer), NULL);
 		buffer[bytes_read] = '\0';
 		remainder = ft_strjoin(remainder, buffer);
 	}
 	if (!remainder || !*remainder)
-		return (NULL);
+		return (free(buffer), NULL);
 	line = extract_line(remainder);
 	remainder = save_remainder(remainder);
-	return (line);
+	return (free(buffer), line);
 }
 /*
 #include <stdio.h>
@@ -56,9 +59,14 @@ int main(void)
 		return 2;
 	}
 	printf("file: %s\n", r_file);
+	free(r_file);
 
 	for (int i = 0; i < 10; ++i)
-		printf("cikl: %s\n", get_next_line(fd));
+	{
+		r_file = get_next_line(fd);
+		printf("cikl: %s\n", r_file);
+		free(r_file);
+	}
 
 	close(fd);
 	return 0;
