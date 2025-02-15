@@ -6,7 +6,7 @@
 /*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:23:41 by vapoghos          #+#    #+#             */
-/*   Updated: 2025/02/06 13:36:50 by vapoghos         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:43:22 by vapoghos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 # endif
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
+char	*read_line(int fd, char *buffer, char *line);
+char	*get_lin(char *line, char *buffer);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char *s1, const char *s2);
-char	*extract_line(char *remainder);
-char	*save_remainder(char *remainder);
+void	clean_line(char *buffer);
+size_t	ft_strlen(const char *str);
 
 #endif
