@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:31:48 by vapoghos          #+#    #+#             */
-/*   Updated: 2025/02/11 14:46:58 by vapoghos         ###   ########.fr       */
+/*   Created: 2025/02/17 19:32:15 by vapoghos          #+#    #+#             */
+/*   Updated: 2025/02/19 14:04:54 by vapoghos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,47 +17,12 @@ char	*get_next_line(int fd)
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || (read(fd, buffer, 0) < 0))
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = get_lin(NULL, buffer);
-	if (line == NULL)
+	line = get_line_m(NULL, buffer);
+	if (!line)
 		return (NULL);
-	line = read_line(fd, buffer, line);
-	if (line == NULL)
-		return (NULL);
-	clean_line(buffer);
+	line = read_line_m(fd, buffer, line);
+	clean_line_m(buffer);
 	return (line);
 }
-/*
-#include <fcntl.h>
-#include <stdio.h>
-
-int main()
-{
-    int fd = open("get_next_line.h", O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Ошибка открытия файла");
-        return 1;
-    }
-
-    char *line = get_next_line(fd);
-    if (line)
-    {
-        printf("Прочитано: %s\n", line);
-        free(line);
-    }
-    else
-    {
-        printf("Ошибка чтения или файл пуст\n");
-    }
-    for (int i = 0; i < 10; ++i){
-        line = get_next_line(fd);
-        printf("✓✅:%s\n", line);
-        free(line);
-    }
-
-    close(fd);
-    return 0;
-}
-*/

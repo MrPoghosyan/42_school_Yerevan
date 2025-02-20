@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   get_next_line_utils.c							  :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: vapoghos <marvin@42.fr>					+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2025/02/06 12:53:45 by vapoghos		  #+#	#+#			 */
-/*   Updated: 2025/02/11 14:40:48 by vapoghos		 ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/17 19:33:42 by vapoghos          #+#    #+#             */
+/*   Updated: 2025/02/19 18:29:52 by vapoghos         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+static size_t	ft_strlen_m(const char *str)
 {
 	size_t	count;
 
@@ -24,22 +24,22 @@ size_t	ft_strlen(const char *str)
 	return (count);
 }
 
-char	*ft_strchr(const char *s, int c)
+static char	*ft_strchr_m(const char *s, int c)
 {
 	if (s == NULL)
 		return (NULL);
 	while (*s != '\0')
 	{
-		if (*s == (char)c)
+		if (*s == '\n')
 			return ((char *)s);
-		s ++;
+		s++;
 	}
 	if ((char)c == '\0')
 		return ((char *)s);
-	return (0);
+	return (NULL);
 }
 
-char	*get_lin(char *line, char *buffer)
+char	*get_line_m(char *line, char *buffer)
 {
 	char	*result;
 	char	*cop_result;
@@ -51,7 +51,7 @@ char	*get_lin(char *line, char *buffer)
 		len++;
 	if (buffer[len] == '\n')
 		len++;
-	result = (char *)malloc(ft_strlen(line) + len + 1);
+	result = (char *)malloc(ft_strlen_m(line) + len + 1);
 	if (!result)
 		return (free(line), NULL);
 	cop_result = result;
@@ -59,49 +59,53 @@ char	*get_lin(char *line, char *buffer)
 	if (temp)
 		while (*temp)
 			*cop_result++ = *temp++;
-	if (buffer)
+	if (buffer && len > 0)
 		while (len--)
 			*cop_result++ = *buffer++;
 	*cop_result = '\0';
 	return (free(line), result);
 }
 
-char	*read_line(int fd, char *buffer, char *line)
+char	*read_line_m(int fd, char *buffer, char *line)
 {
-	ssize_t		bytes_read;
+	ssize_t	bytes_read;
+	size_t	i;
 
-	while (ft_strchr(line, '\n') == 0)
+	i = 0;
+	while (ft_strchr_m(line, '\n') == NULL)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == -1 || (bytes_read == 0 && ft_strlen(line) == 0))
-			return (buffer[0] = '\0', free(line), NULL);
+		if (bytes_read == -1 || (bytes_read == 0 && ft_strlen_m(line) == 0))
+		{
+			while (i <= BUFFER_SIZE)
+				buffer[i++] = '\0';
+			return (free(line), NULL);
+		}
 		if (bytes_read == 0)
+		{
+			buffer[bytes_read] = '\0';
 			break ;
+		}
 		buffer[bytes_read] = '\0';
-		line = get_lin(line, buffer);
+		line = get_line_m(line, buffer);
 		if (line == NULL)
 			return (NULL);
 	}
 	return (line);
 }
 
-void	clean_line(char *buffer)
+void	clean_line_m(char *buffer)
 {
-	char	*newline;
 	size_t	len;
+	size_t	i;
 
 	len = 0;
-	while (*(buffer + len) != '\n' && *(buffer + len) != '\0')
+	while (buffer[len] != '\0' && buffer[len] != '\n')
 		len++;
-	newline = buffer + len;
-	if (!newline || !*(newline + 1))
-	{
-		*buffer = '\0';
-		return ;
-	}
-	if (*newline == '\n')
-		newline++;
-	while (*newline)
-		*buffer++ = *newline++;
-	*buffer = '\0';
+	if (buffer[len] == '\n')
+		len++;
+	i = 0;
+	while (buffer[len] != '\0')
+		buffer[i++] = buffer[len++];
+	buffer[i] = '\0';
 }
