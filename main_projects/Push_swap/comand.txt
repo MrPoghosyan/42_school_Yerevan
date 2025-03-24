@@ -1,0 +1,4 @@
+
+cc -g utils.c push_swap.c ~/42_school_Erevan/main_projects/Libft/ft_atoi.c -o push_swap
+
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap 4 67 3 87 23 458 -5896 2147483647 -2147483648
