@@ -1,5 +1,5 @@
 #include "header.h"
-
+/*
 int	check_int(int count, const char **arg)
 {
 	int	i;
@@ -14,14 +14,14 @@ int	check_int(int count, const char **arg)
 		while (arg[i][j])
 		{
 			if (arg[i][j] < '0' || arg[i][j] > '9')
-				return (0);
+				return (1);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
-
+*/
 t_stack	append_valid_int(int count, char **argv)
 {
 	t_stack	result;
@@ -38,4 +38,39 @@ t_stack	append_valid_int(int count, char **argv)
 	}
 	result.size = count -1;
 	return (result);
+}
+static int check_sign(const char *c, int *sign)
+{
+	*sign = 1;
+	if (*c == '-' || *c == '+')
+	{
+		if (*c == '-')
+			*sign = -1;
+		return (1);
+	}
+	return (0);
+}
+
+int	is_valid_integer(const char *str)
+{
+	long	result;
+	int		sign;
+
+	str += check_sign(str, &sign);
+	if (!*str)
+		return (0);
+	while (*str)
+	{
+		while (*str == ' ')
+			str++;
+		str += check_sign(str, &sign);
+		if (!ft_isdigit(*str))
+			return (0);
+		result = result * 10 + (*str - '0');
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign = -1 && -result < INT_MIN))
+			return (0);
+		str++;
+	}
+	return (1);
 }
