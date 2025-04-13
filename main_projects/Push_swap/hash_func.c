@@ -1,10 +1,14 @@
 #include "header.h"
 
+t_node *g_hash_table[TABLE_SIZE] = {0};
+
 unsigned long hash_djb2(const char *str)
 {
 	unsigned long	hash;
 	int				c;
 
+	if (!str)
+		return (0);
 	hash = 5381;
 	while ((c = *str++))
 		hash = ((hash << 5) + hash) + c;
@@ -18,11 +22,10 @@ int	check_and_add(char *str)
 	t_node			*new;
 
 	index = hash_djb2(str) % TABLE_SIZE;
-	printf("index: %u", index);
 	current = g_hash_table[index];
 	while (current)
 	{
-		if (ft_strcmp(current->str, str) == 0)
+		if (ft_strncmp(current->str, str, ft_strlen(str)) == 0)
 			return (1);
 		current = current->next;
 	}
@@ -62,11 +65,11 @@ int	hash_duplicates(char **arr, int count)
 	int	i;
 
 	i = 0;
-	while (i < count)
+	while (i < count - 1)
 	{
 		if (check_and_add(arr[i]) == 1)
 		{
-			free_table();
+//			free_table();
 			exit (1);
 		}
 		++i;

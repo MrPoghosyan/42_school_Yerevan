@@ -7,7 +7,7 @@
 # include <limits.h>
 # include "/home/aranea/42_school_Erevan/main_projects/Libft/libft.h"
 
-# define TABLE_SIZE 10000
+# define TABLE_SIZE 1000
 
 typedef struct s_stack
 {
@@ -21,12 +21,11 @@ typedef struct s_node
     struct s_node   *next;
 } t_node;
 
-t_node  *g_hash_table[TABLE_SIZE];
+extern t_node  *g_hash_table[TABLE_SIZE];
 
-//int     check_int(int count, const char **arg);
 t_stack         append_valid_int(int argc, char **argv);
+int             check_sign(const char *c, int *sign)
 void            free_steck(t_stack arr);
-//int             check_sign(const char *c, int *sign);
 int             is_valid_integer(const char *str);
 
 // Hash function
