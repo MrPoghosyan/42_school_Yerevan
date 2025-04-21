@@ -1,27 +1,5 @@
 #include "header.h"
-/*
-int	check_int(int count, const char **arg)
-{
-	int	i;
-	int	j;
 
-	i = 1;
-	while (i < count)
-	{
-		j = 0;
-		if (arg[i][j] == '-' || arg[i][j] == '+')
-			j++;
-		while (arg[i][j])
-		{
-			if (arg[i][j] < '0' || arg[i][j] > '9')
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-*/
 t_stack	append_valid_int(int count, char **argv)
 {
 	t_stack	result;
@@ -40,24 +18,18 @@ t_stack	append_valid_int(int count, char **argv)
 	return (result);
 }
 
-int check_sign(const char *c, int *sign)
-{
-	*sign = 1;
-	if (*c == '-' || *c == '+')
-	{
-		if (*c == '-')
-			*sign = -1;
-		return (1);
-	}
-	return (0);
-}
-
 int	is_valid_integer(const char *str)
 {
 	long	result;
 	int		sign;
 
-	str += check_sign(str, &sign);
+	sign = 1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
 	if (!*str)
 		return (0);
 	result = 0;
@@ -73,3 +45,4 @@ int	is_valid_integer(const char *str)
 	}
 	return (1);
 }
+
