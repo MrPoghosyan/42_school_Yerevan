@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   header.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/29 11:36:37 by vapoghos          #+#    #+#             */
+/*   Updated: 2025/04/29 19:20:29 by vapoghos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HEADER_H
 # define HEADER_H
 
@@ -5,38 +17,38 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include "/home/aranea/42_school_Erevan/main_projects/Libft/libft.h"
-
-# define TABLE_SIZE 1000
-
-typedef struct s_stack
-{
-    int *arr;
-    int size;
-} t_stack;
+# include "../Libft/libft.h"
 
 typedef struct s_node
 {
-    int             value;
-    struct s_node   *next;
-} t_node;
+	int				value;
+	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
+	struct s_node	*next;
+}	t_node;
 
-extern t_node  *g_hash_table[TABLE_SIZE];
-
-t_stack         append_valid_int(int argc, char **argv);
-void            free_steck(t_stack arr);
-int             is_valid_integer(const char *str);
+typedef struct s_stack
+{
+	t_node	*top;
+	int		size;
+	char	name;
+}	t_stack;
 
 //Valid arguments
-int             is_valid_format(const char *str);
-int             is_within_int_range(const char *str);
-int             validate_argument(const char **str, int count);
-int             hash_duplicates(const char **arg);
+int				is_valid_integer(const char *str);
+int				is_valid_format(const char *str);
+int				is_within_int_range(const char *str);
+int				validate_argument(const char **str, int count);
+int				hash_duplicates(int *arr, int size);
+int				*add_int(const char **str, int count);
+void			insertion_sort(int *arr, int size);
+int				count_int(const char **str, int count);
+void			free_split(char **split);
 
 // Hash function
-unsigned long   hash_int(int n);
-int             check_and_add(int value);
-void            free_table(void);
+unsigned long	hash_int(int n);
 
 #endif
-

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_validation.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/29 11:35:52 by vapoghos          #+#    #+#             */
+/*   Updated: 2025/04/29 11:36:09 by vapoghos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
-int is_valid_format(const char *str)
+int	is_valid_format(const char *str)
 {
 	while (*str)
 	{
@@ -27,19 +39,6 @@ int is_valid_format(const char *str)
 	return (1);
 }
 
-static void	free_split(char **split)
-{
-	int	i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
-
 int	is_within_int_range(const char *str)
 {
 	char	**split;
@@ -57,36 +56,37 @@ int	is_within_int_range(const char *str)
 				return (free_split(split), 0);
 			++tmp;
 		}
-		if (hash_duplicates((const char **)split))
-			return (free_split(split), 0);
 		return (free_split(split), 1);
 	}
 	else
+	{
 		if (is_valid_integer(str))
 		{
-			if (!check_and_add(ft_atoi(str)))
-				return (0);
 			return (1);
 		}
+	}
 	return (0);
 }
 
-int	hash_duplicates(const char **arg)
+int	hash_duplicates(int *arr, int size)
 {
 	int	i;
 
-	i = 0;
-	while (arg[i])
+	insertion_sort(arr, size);
+	i = 1;
+	while (i < size)
 	{
-		if (!check_and_add(ft_atoi(arg[i])))
+		if (arr[i] == arr[i - 1])
 			return (1);
 		++i;
 	}
 	return (0);
 }
 
-int validate_argument(const char **str, int count)
+int	validate_argument(const char **str, int count)
 {
+	int	*arr;
+	int	size;
 	int	i;
 
 	i = 1;
@@ -94,16 +94,26 @@ int validate_argument(const char **str, int count)
 	{
 		if (!is_valid_format(str[i]))
 		{
-			printf("VA == is_valid_format:\n");
-
 			return (0);
 		}
 		if (!is_within_int_range(str[i]))
 		{
-			printf("VA == is_within_int_range:\n");
 			return (0);
 		}
 		++i;
 	}
-	return (1);
+	arr = add_int(str, count);
+	if (!arr)
+		return (-1);
+	size = count_int(str, count);
+
+	for (int i = 0; i < size; ++i)
+		printf("%d ", arr[i]);
+	printf("size = %d\n", size);
+
+	if (hash_duplicates(arr, size))
+	{
+		return (free(arr), 0);
+	}
+	return (free(arr), 1);
 }
