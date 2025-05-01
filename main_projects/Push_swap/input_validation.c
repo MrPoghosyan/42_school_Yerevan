@@ -93,27 +93,16 @@ int	validate_argument(const char **str, int count)
 	while (i < count)
 	{
 		if (!is_valid_format(str[i]))
-		{
 			return (0);
-		}
 		if (!is_within_int_range(str[i]))
-		{
 			return (0);
-		}
 		++i;
 	}
-	arr = add_int(str, count);
+	size = count_int(str, count);
+	arr = add_int(str, count, size);
 	if (!arr)
 		return (-1);
-	size = count_int(str, count);
-
-	for (int i = 0; i < size; ++i)
-		printf("%d ", arr[i]);
-	printf("size = %d\n", size);
-
 	if (hash_duplicates(arr, size))
-	{
 		return (free(arr), 0);
-	}
 	return (free(arr), 1);
 }

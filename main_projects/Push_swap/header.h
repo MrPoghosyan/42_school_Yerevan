@@ -43,7 +43,7 @@ int				is_valid_format(const char *str);
 int				is_within_int_range(const char *str);
 int				validate_argument(const char **str, int count);
 int				hash_duplicates(int *arr, int size);
-int				*add_int(const char **str, int count);
+int				*add_int(const char **str, int count, int size);
 void			insertion_sort(int *arr, int size);
 int				count_int(const char **str, int count);
 void			free_split(char **split);

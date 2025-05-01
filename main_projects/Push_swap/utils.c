@@ -102,15 +102,13 @@ int	count_int(const char **str, int count)
 	return (size);
 }
 
-int	*add_int(const char **str, int count)
+int	*add_int(const char **str, int count, int size)
 {
 	char	**split;
 	char	**tmp_free;
-	int		size;
 	int		*arr;
 	int		*tmp;
 
-	size = count_int(str, count);
 	arr = (int *)malloc(sizeof(int) * (size + 1));
 	if (!arr)
 		return (NULL);
@@ -130,6 +128,5 @@ int	*add_int(const char **str, int count)
 		else
 			*tmp++ = ft_atoi(str[count]);
 	}
-	tmp = NULL;
-	return (arr);
+	return (tmp = NULL, arr);
 }
