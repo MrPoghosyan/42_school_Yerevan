@@ -39,6 +39,34 @@ int	is_valid_format(const char *str)
 	return (1);
 }
 
+int	is_valid_integer(const char *str)
+{
+	long	result;
+	int		sign;
+
+	sign = 1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	if (!*str)
+		return (0);
+	result = 0;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		result = result * 10 + (*str - '0');
+		if ((sign == 1 && result > INT_MAX)
+			|| (sign == -1 && - result < INT_MIN))
+			return (0);
+		str++;
+	}
+	return (1);
+}
+
 int	is_within_int_range(const char *str)
 {
 	char	**split;
@@ -68,7 +96,7 @@ int	is_within_int_range(const char *str)
 	return (0);
 }
 
-int	hash_duplicates(int *arr, int size)
+int	duplicates(int *arr, int size)
 {
 	int	i;
 
@@ -102,7 +130,7 @@ int	validate_argument(const char **str, int count)
 	arr = add_int(str, count, size);
 	if (!arr)
 		return (-1);
-	if (hash_duplicates(arr, size))
+	if (duplicates(arr, size))
 		return (free(arr), 0);
 	return (free(arr), 1);
 }

@@ -12,34 +12,6 @@
 
 #include "header.h"
 
-int	is_valid_integer(const char *str)
-{
-	long	result;
-	int		sign;
-
-	sign = 1;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	if (!*str)
-		return (0);
-	result = 0;
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			return (0);
-		result = result * 10 + (*str - '0');
-		if ((sign == 1 && result > INT_MAX)
-			|| (sign == -1 && - result < INT_MIN))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
 void	insertion_sort(int *arr, int size)
 {
 	int	key;
@@ -108,16 +80,18 @@ int	*add_int(const char **str, int count, int size)
 	char	**tmp_free;
 	int		*arr;
 	int		*tmp;
+	int		i;
 
-	arr = (int *)malloc(sizeof(int) * (size + 1));
+	arr = (int *)malloc(sizeof(int) * size);
 	if (!arr)
 		return (NULL);
 	tmp = arr;
-	while (count-- > 1)
+	i = 0;
+	while (++i < count)
 	{
-		if (ft_strchr(str[count], ' '))
+		if (ft_strchr(str[i], ' '))
 		{
-			split = ft_split(str[count], ' ');
+			split = ft_split(str[i], ' ');
 			if (!split)
 				return (NULL);
 			tmp_free = split;
@@ -126,7 +100,7 @@ int	*add_int(const char **str, int count, int size)
 			free_split(tmp_free);
 		}
 		else
-			*tmp++ = ft_atoi(str[count]);
+			*tmp++ = ft_atoi(str[i]);
 	}
-	return (tmp = NULL, arr);
+	return (arr);
 }
