@@ -34,21 +34,19 @@ typedef struct s_stack
 }	t_stack;
 
 //Valid arguments
-int				is_valid_integer(const char *str);
-int				is_valid_format(const char *str);
-int				is_within_int_range(const char *str);
-int				validate_argument(const char **str, int count);
-int				duplicates(int *arr, int size);
-int				*add_int(const char **str, int count, int size);
-void			insertion_sort(int *arr, int size);
-int				count_int(const char **str, int count);
-void			free_split(char **split);
+int		is_valid_integer(const char *str);
+int		is_valid_format(const char *str); // hanel maqur funkciayi hamar.//
+int		is_within_int_range(const char *str);
+int		validate_argument(const char **str, int count);
+int		duplicates(int *arr, int size);
+int		*add_int(const char **str, int count, int size);
+void	insertion_sort(int *arr, int size);
+int		count_int(const char **str, int count);
+void	free_split(char **split);
 
 // add stack
-int				cread_node(t_node **head, t_node **tail, int value,
-int index);
-t_node			*add_node(char **argv, int count);
-void			free_node_chain(t_node **head);
-int				get_index(const int *arr, int n, int size);
+int		cread_node(t_node **new_node, int value, int index);
+void	free_node_chain(t_node **head);
+int		get_index(const int *arr, int n, int size);
 
 #endif

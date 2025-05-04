@@ -27,25 +27,13 @@ void	free_node_chain(t_node **head)
 	*head = NULL;
 }
 
-int	cread_node(t_node **head, t_node **tail, int value, int index)
+int	cread_node(t_node **new_node, int value, int index)
 {
-	t_node	*new;
-
-	new = malloc(sizeof(t_node));
-	if (!new)
+	*new_node = (t_node *)malloc(sizeof(t_node));
+	if (!(*new_node))
 		return (0);
-	new->value = value;
-	new->index = index;
-	new->next = NULL;
-	if (!*head)
-	{
-		*head = new;
-		*tail = new;
-	}
-	else
-	{
-		(*tail)->next = new;
-		*tail = new;
-	}
+	(*new_node)->value = value;
+	(*new_node)->index = index;
+	(*new_node)->next = NULL;
 	return (1);
 }

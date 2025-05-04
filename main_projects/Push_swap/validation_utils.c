@@ -80,18 +80,16 @@ int	*add_int(const char **str, int count, int size)
 	char	**tmp_free;
 	int		*arr;
 	int		*tmp;
-	int		i;
 
 	arr = (int *)malloc(sizeof(int) * size);
 	if (!arr)
 		return (NULL);
 	tmp = arr;
-	i = 0;
-	while (++i < count)
+	while (--count)
 	{
-		if (ft_strchr(str[i], ' '))
+		if (ft_strchr(*str, ' '))
 		{
-			split = ft_split(str[i], ' ');
+			split = ft_split(*str++, ' ');
 			if (!split)
 				return (NULL);
 			tmp_free = split;
@@ -100,7 +98,7 @@ int	*add_int(const char **str, int count, int size)
 			free_split(tmp_free);
 		}
 		else
-			*tmp++ = ft_atoi(str[i]);
+			*tmp++ = ft_atoi(*str++);
 	}
 	return (arr);
 }

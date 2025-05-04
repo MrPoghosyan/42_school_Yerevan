@@ -127,7 +127,7 @@ int	validate_argument(const char **str, int count)
 		++i;
 	}
 	size = count_int(str, count);
-	arr = add_int(str, count, size);
+	arr = add_int(&str[1], count, size);
 	if (!arr)
 		return (-1);
 	if (duplicates(arr, size))
