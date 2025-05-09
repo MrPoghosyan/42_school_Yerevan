@@ -28,7 +28,7 @@ typedef struct s_node
 
 //Valid arguments
 int		is_valid_integer(const char *str);
-int		is_valid_format(const char *str); // hanel maqur funkciayi hamar.//
+int		is_valid_format(const char *str);
 int		is_within_int_range(const char *str);
 int		validate_argument(const char **str, int count);
 int		duplicates(int *arr, int size);
@@ -46,6 +46,7 @@ t_node	*add_node(const int *arr, int size);
 // sorts func
 void	sort_three(t_node **a);
 void	insertion_sort_n(t_node **a, t_node **b, int size);
+int		max_bits(t_node *stack);
 void	radix_sort(t_node **a, t_node **b, int size);
 
 // operations.c
@@ -53,7 +54,7 @@ void	sa(t_node **a); //+
 void	sb(t_node **b);
 void	ss(t_node **a, t_node **b);
 
-void	pa(t_node **a, t_node **b); //-
+void	pa(t_node **a, t_node **b); //+
 void	pb(t_node **a, t_node **b); //+
 
 void	ra(t_node **a); //+

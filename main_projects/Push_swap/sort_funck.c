@@ -81,3 +81,28 @@ void	insertion_sort_n(t_node **a, t_node **b, int size)
 	while (pushed--)
 		pa(a, b);
 }
+
+void	radix_sort(t_node **a, t_node **b, int size)
+{
+	int	bits;
+	int	i;
+	int	j;
+
+	i = 0;
+	bits = max_bits(*a);
+	while (i < bits)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if ((((*a)->index >> i) & 1) == 0)
+				pb(a, b);
+			else
+				ra(a);
+			j++;
+		}
+		while (*b)
+			pa(a, b);
+		i++;
+	}
+}

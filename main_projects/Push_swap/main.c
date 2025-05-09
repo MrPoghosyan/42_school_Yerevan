@@ -12,23 +12,35 @@
 
 #include "header.h"
 
+static int	validate_sort(int *arr, int size)
+{
+	int	i;
+
+	i = 0;
+	if (size <= 1)
+		return (1);
+	while (i < (size - 1))
+	{
+		if (arr[i] > arr[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static void	push_swap(t_node **a_node, int size)
 {
 	t_node	*b_node;
 
 	b_node = NULL;
 	if (size == 2)
-	{
-		if ((*a_node)->value > (*a_node)->next->value)
-			sa(a_node);
-	}
+		sa(a_node);
 	else if (size == 3)
 		sort_three(a_node);
 	else if (size < 31)
 		insertion_sort_n(a_node, &b_node, size);
-/*	else
-		radix_sort(a_node, b_node, size);
-*/
+	else
+		radix_sort(a_node, &b_node, size);
 }
 
 int	main(int argc, char **argv)
@@ -45,17 +57,12 @@ int	main(int argc, char **argv)
 			arr = add_int((const char **)&argv[1], argc, size);
 			if (!arr)
 				return (1);
+			if (validate_sort(arr, size))
+				return (0);
 			a_node = add_node((const int *)arr, size);
-			if (size > 1)
-				push_swap(&a_node, size);
-/*			t_node *tmp = a_node;
-			for (int i = 0; i < size; ++i){
-				printf("%d ", tmp->value);
-				tmp = tmp->next;
-			}
-*/			free(arr);
+			push_swap(&a_node, size);
+			free(arr);
 			free_node_chain(&a_node);
-//			write(1, "\n", 1);
 		}
 		else
 			write (1, "Error\n", 6);

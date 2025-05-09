@@ -14,6 +14,24 @@ int	get_index(const int *arr, int n, int size)
 	return (index);
 }
 
+int	max_bits(t_node *stack)
+{
+	int	max;
+	int	bits;
+
+	max = 0;
+	while (stack)
+	{
+		if (stack->index > max)
+			max = stack->index;
+		stack = stack->next;
+	}
+	bits = 0;
+	while ((max >> bits) != 0)
+		bits++;
+	return (bits);
+}
+
 void	free_node_chain(t_node **head)
 {
 	t_node	*tmp;
