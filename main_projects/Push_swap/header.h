@@ -26,13 +26,6 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-typedef struct s_stack
-{
-	t_node	*top;
-	int		size;
-	char	name;
-}	t_stack;
-
 //Valid arguments
 int		is_valid_integer(const char *str);
 int		is_valid_format(const char *str); // hanel maqur funkciayi hamar.//
@@ -48,5 +41,27 @@ void	free_split(char **split);
 int		cread_node(t_node **new_node, int value, int index);
 void	free_node_chain(t_node **head);
 int		get_index(const int *arr, int n, int size);
+t_node	*add_node(const int *arr, int size);
+
+// sorts func
+void	sort_three(t_node **a);
+void	insertion_sort_n(t_node **a, t_node **b, int size);
+void	radix_sort(t_node **a, t_node **b, int size);
+
+// operations.c
+void	sa(t_node **a); //+
+void	sb(t_node **b);
+void	ss(t_node **a, t_node **b);
+
+void	pa(t_node **a, t_node **b); //-
+void	pb(t_node **a, t_node **b); //+
+
+void	ra(t_node **a); //+
+void	rb(t_node **b);
+void	rr(t_node **a, t_node **b);
+
+void	rra(t_node **a); //+
+void	rrb(t_node **b);
+void	rrr(t_node **a, t_node **b);
 
 #endif

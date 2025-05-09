@@ -12,48 +12,28 @@
 
 #include "header.h"
 
-static t_node	*add_node(const int *arr, int size)
+static void	push_swap(t_node **a_node, int size)
 {
-	t_node	*head;
-	t_node	*tail;
-	t_node	*new;
-	int		i;
+	t_node	*b_node;
 
-	head = NULL;
-	i = 0;
-	while (i < size)
+	b_node = NULL;
+	if (size == 2)
 	{
-		if (!cread_node(&new, arr[i], get_index(arr, arr[i], size)))
-			return (free_node_chain(&head), NULL);
-		if (!head)
-		{
-			head = new;
-			tail = head;
-		}
-		else
-		{
-			tail->next = new;
-			tail = new;
-		}
-		i++;
+		if ((*a_node)->value > (*a_node)->next->value)
+			sa(a_node);
 	}
-	return (head);
-}
-/*
-static void	push_swap(t_node *node_a, int size)
-{
-	if (size < 4)
-		heand_sort(node_a, size);
-	else if (size < 21)
-		insertion_selection(node_a, size);
-	else
-		radix_sort(node_a, size);
-
-}
+	else if (size == 3)
+		sort_three(a_node);
+	else if (size < 31)
+		insertion_sort_n(a_node, &b_node, size);
+/*	else
+		radix_sort(a_node, b_node, size);
 */
+}
+
 int	main(int argc, char **argv)
 {
-	t_node	*node_a;
+	t_node	*a_node;
 	int		*arr;
 	int		size;
 
@@ -65,16 +45,17 @@ int	main(int argc, char **argv)
 			arr = add_int((const char **)&argv[1], argc, size);
 			if (!arr)
 				return (1);
-			node_a = add_node((const int *)arr, size);
-//			push_swap(node_a, size);
-			t_node *tmp = node_a;
+			a_node = add_node((const int *)arr, size);
+			if (size > 1)
+				push_swap(&a_node, size);
+/*			t_node *tmp = a_node;
 			for (int i = 0; i < size; ++i){
 				printf("%d ", tmp->value);
 				tmp = tmp->next;
 			}
-			free(arr);
-			free_node_chain(&node_a);
-			write(1, "\n", 1);
+*/			free(arr);
+			free_node_chain(&a_node);
+//			write(1, "\n", 1);
 		}
 		else
 			write (1, "Error\n", 6);
