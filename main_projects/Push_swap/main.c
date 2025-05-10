@@ -12,22 +12,6 @@
 
 #include "header.h"
 
-static int	validate_sort(int *arr, int size)
-{
-	int	i;
-
-	i = 0;
-	if (size <= 1)
-		return (1);
-	while (i < (size - 1))
-	{
-		if (arr[i] > arr[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 static void	push_swap(t_node **a_node, int size)
 {
 	t_node	*b_node;
@@ -65,7 +49,7 @@ int	main(int argc, char **argv)
 			free_node_chain(&a_node);
 		}
 		else
-			write (1, "Error\n", 6);
+			write (2, "Error\n", 6);
 	}
 	else
 		write(1, "\n", 1);

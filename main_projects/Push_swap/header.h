@@ -13,11 +13,10 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <stdio.h> // For printf()
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
-# include "libft.h"
+# include "./Libft/libft.h"
 
 typedef struct s_node
 {
@@ -36,6 +35,7 @@ int		*add_int(const char **str, int count, int size);
 void	insertion_sort(int *arr, int size);
 int		count_int(const char **str, int count);
 void	free_split(char **split);
+int		validate_sort(int *arr, int size);
 
 // add stack
 int		cread_node(t_node **new_node, int value, int index);
@@ -50,19 +50,10 @@ int		max_bits(t_node *stack);
 void	radix_sort(t_node **a, t_node **b, int size);
 
 // operations.c
-void	sa(t_node **a); //+
-void	sb(t_node **b);
-void	ss(t_node **a, t_node **b);
-
-void	pa(t_node **a, t_node **b); //+
-void	pb(t_node **a, t_node **b); //+
-
-void	ra(t_node **a); //+
-void	rb(t_node **b);
-void	rr(t_node **a, t_node **b);
-
-void	rra(t_node **a); //+
-void	rrb(t_node **b);
-void	rrr(t_node **a, t_node **b);
+void	sa(t_node **a);
+void	pa(t_node **a, t_node **b);
+void	pb(t_node **a, t_node **b);
+void	ra(t_node **a);
+void	rra(t_node **a);
 
 #endif
