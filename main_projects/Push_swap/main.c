@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 			if (!arr)
 				return (1);
 			if (validate_sort(arr, size))
-				return (0);
+				return (free(arr), 0);
 			a_node = add_node((const int *)arr, size);
 			push_swap(&a_node, size);
 			free(arr);
