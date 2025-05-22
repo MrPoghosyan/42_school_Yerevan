@@ -9,6 +9,7 @@
 # include <stdio.h> //perror.
 # include <string.h> //strerror.
 # include <sys/wait.h> //wait, waitpid.
+# include <errno.h> //for errno = Einval;
 
 # include "./Libft/libft.h"
 // Optional: define buffer size or error macros
@@ -19,6 +20,7 @@ void	parent_process(int outfile, int fd[2], char *cmd2, char **envp);
 void	exec_command(char *cmd, char **envp);
 
 //utils functions
+int		empty_argument(const char *str);
 void	check_argc(int argc);
 void	free_split(char **line);
 char	*get_path_line(char **envp);

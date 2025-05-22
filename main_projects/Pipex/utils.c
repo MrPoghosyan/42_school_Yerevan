@@ -9,6 +9,24 @@ void	check_argc(int argc)
 	}
 }
 
+int	empty_argument(const char *str)
+{
+	int	i;
+	int	signal;
+
+	if (!str || !*str)
+		return (1);
+	i = 0;
+	signal = 1;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			signal = 0;
+		i++;
+	}
+	return (signal);
+}
+
 void	free_split(char **line)
 {
 	int	i;
