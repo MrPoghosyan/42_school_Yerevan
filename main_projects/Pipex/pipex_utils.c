@@ -1,5 +1,5 @@
 #include "pipex.h"
-
+/*
 static char	*find_path(char *cmd, char **envp)
 {
 	char	**paths;
@@ -51,4 +51,18 @@ void	exec_command(char *cmd, char **envp)
 	free_split(args);
 	free(path);
 	exit(1);
+}
+*/
+
+void	exec_command(char *cmd, char **envp)
+{
+	char	*argv[4];
+
+	argv[0] = "/bin/sh";
+	argv[1] = "-c";
+	argv[2] = cmd;
+	argv[3] = NULL;
+	execve("/bin/sh", argv, envp);
+	perror("execve");
+	exit(EXIT_FAILURE);
 }

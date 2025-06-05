@@ -1,14 +1,39 @@
 #ifndef PIPEX_BONUS_H
 # define PIPEX_BONUS_H
 
-// Required headers
-# include "pipex.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <sys/wait.h>
+# include <stdio.h>
+# include <errno.h>
+# include <string.h>
+# include "./Libft/libft.h"
+# include "./get_next_line.h"
+# include "./pipex.h"
 
-// Optional: define buffer size or error macros
+# define READ_END 0
+# define WRITE_END 1
 
-// Function declarations
+typedef struct s_pipex
+{
+    int     in_fd;
+    int     out_fd;
+    int     pipe_fd[2];
+    int     here_doc;
+    char    *limiter;
+    pid_t   pid;
+    char    **paths;
+    char    **cmd_args;
+}   t_pipex;
 
-//utils functions
-void	check_argc_bonus(int argc, char **argv);
+void    init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
+void    exec_cmd(t_pipex *pipex, char *cmd, char **envp);
+void    pipe_handler(t_pipex *pipex, int argc, char **argv, char **envp);
+void    here_doc(t_pipex *pipex);
+void    error_exit(char *msg, int exit_code);
+void    free_array(char **arr);
+void    close_fds(t_pipex *pipex);
+char    *get_cmd_path(char *cmd, char **paths);
 
 #endif

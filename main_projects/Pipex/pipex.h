@@ -12,7 +12,6 @@
 # include <errno.h> //for errno = Einval;
 
 # include "./Libft/libft.h"
-// Optional: define buffer size or error macros
 
 // Function declarations
 void	child_process(int infile, int fd[2], char *cmd1, char **envp);

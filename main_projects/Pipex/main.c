@@ -8,7 +8,7 @@ int	main(int argc, char **argv, char **envp)
 	pid_t	pid;
 
 	check_argc(argc);
-	infile = open(argv[1], O_RDONLY);
+	infile = open(argv[1], O_RDONLY | O_CLOEXEC);
 	if (infile < 0)
 		return (perror("open infile"), 1);
 	outfile = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, 0644);
