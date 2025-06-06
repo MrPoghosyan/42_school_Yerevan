@@ -15,25 +15,25 @@
 # define READ_END 0
 # define WRITE_END 1
 
-typedef struct s_pipex
+typedef struct	s_pipex
 {
-    int     in_fd;
-    int     out_fd;
-    int     pipe_fd[2];
-    int     here_doc;
-    char    *limiter;
-    pid_t   pid;
-    char    **paths;
-    char    **cmd_args;
-}   t_pipex;
+	int		in_fd;
+	int		out_fd;
+	int		pipe_fd[2];
+	int		here_doc;
+	char	*limiter;
+	pid_t	pid;
+	char	**paths;
+	char	**cmd_args;
+}	t_pipex;
 
-void    init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
-void    exec_cmd(t_pipex *pipex, char *cmd, char **envp);
-void    pipe_handler(t_pipex *pipex, int argc, char **argv, char **envp);
-void    here_doc(t_pipex *pipex);
-void    error_exit(char *msg, int exit_code);
-void    free_array(char **arr);
-void    close_fds(t_pipex *pipex);
-char    *get_cmd_path(char *cmd, char **paths);
+void	init_pipex(t_pipex *pipex, int argc, char **argv, char **envp);
+void	exec_cmd(t_pipex *pipex, char *cmd, char **envp);
+void	pipe_handler(t_pipex *pipex, int argc, char **argv, char **envp);
+void	here_doc(t_pipex *pipex);
+void	error_exit(char *msg, int exit_code);
+void	free_array(char **arr);
+void	close_fds(t_pipex *pipex);
+char	*get_cmd_path(char *cmd, char **paths);
 
 #endif
