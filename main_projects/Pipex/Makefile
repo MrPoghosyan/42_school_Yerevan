@@ -2,14 +2,15 @@ NAME	= pipex
 BONUS	= pipex_bonus
 
 CC		= cc
-CFLAGS	= -g -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 
 LIBFT_DIR	= Libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 INCLUDE		= -I. -I$(LIBFT_DIR)
 
 SRC			= main.c pipex.c pipex_utils.c utils.c
-BONUS_SRC	= pipex_bonus.c utils_bonus.c pipex_utils.c utils.c get_next_line.c get_next_line_utils.c
+BONUS_SRC	= main_bonus.c pipex_bonus.c utils_bonus.c pipex_utils.c utils.c \
+			  get_next_line.c get_next_line_utils.c
 
 OBJ			= $(SRC:.c=.o)
 BONUS_OBJ	= $(BONUS_SRC:.c=.o)

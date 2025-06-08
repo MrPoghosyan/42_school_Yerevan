@@ -28,4 +28,36 @@ sudo dmesg | grep kill -> կատարված գործողությունները ki
 
 └─$ which python3 -> Տեսնել python3 ինտերպրիտատրի ճանապարը;
 
+╰─$ echo $?  Տեսլնել ինչ արդյունքով է ավարտվել ծրագիրը                  1 ↵ սխալ 0 ֊» ճիշտ «հիմնականում, եթե այլ մշակում չկա»
+
+Ստւգել միաժամանակ աշխատանքը հրամաների։
+ Ընդհանուր ժամանակաը պետք է լինի ամենամակսիմալը այս դեպքում ~3;
+    └─$ time ./pipex infile 'sleep 1' 'sleep 3' outfile
+    └─$ time < infile sleep 3 | sleep 1 > outfile 
+
+        real    3.00s
+        user    0.00s
+        sys     0.00s
+        cpu     0%
+
+        real    1.00s
+        user    0.00s
+        sys     0.00s
+        cpu     0%
+
+└─$ ./pipex infile "yes" "head" outfile -> ստուգել pip-երի ճիշտ աշխատանքը։ Պետք է 10 y գրվի outfile-ի մեջ և վերջանա ծրագիրը։
+
+./pipex infile "cat /dev/urandom" "head -c 100" outfile
+ls -l outfile  # Պետք է լինի 100 բայթ
+
+./pipex infile "sleep 5" "echo done" outfile -> Պետք է սպասի 5 րոպե
+    Ակնկալվող վարքագիծ՝
+        Արդյունք՝ outfile-ը պարունակում է done:
+
+└─$ env -i bash --noprofile --norc -> մեկուսացնել փորձերի համար միջավայրը (օրինակ՝ հեռացնել PATH-ը, փոխել միջավայրի փոփոխականները, գործարկել պոտենցիալ վտանգավոր հրամաններ)։
+    echo $PATH -> Կվերադարձնի ընթացիկ PATH-ը
+    unset PATH ֊> Ջնջել PATH փոփոխականը
+        echo $PATH ֊> ոչինչ չի արտածի
+    export PATH=/bin:/usr/bin:/usr/local/bin ֊> Վերականգնել PATH-ը (անհրաժեշտության դեպքում);
+
 man 2 dup

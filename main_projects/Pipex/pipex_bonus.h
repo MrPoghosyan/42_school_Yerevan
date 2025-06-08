@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/07 13:11:53 by vapoghos          #+#    #+#             */
+/*   Updated: 2025/06/07 15:08:50 by vapoghos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_BONUS_H
 # define PIPEX_BONUS_H
 
@@ -15,7 +27,7 @@
 # define READ_END 0
 # define WRITE_END 1
 
-typedef struct	s_pipex
+typedef struct s_pipex
 {
 	int		in_fd;
 	int		out_fd;
@@ -32,7 +44,7 @@ void	exec_cmd(t_pipex *pipex, char *cmd, char **envp);
 void	pipe_handler(t_pipex *pipex, int argc, char **argv, char **envp);
 void	here_doc(t_pipex *pipex);
 void	error_exit(char *msg, int exit_code);
-void	free_array(char **arr);
+void	clean_exit(t_pipex *pipex, char *msg, int exit_code);
 void	close_fds(t_pipex *pipex);
 char	*get_cmd_path(char *cmd, char **paths);
 

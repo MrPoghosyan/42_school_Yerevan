@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/07 13:10:58 by vapoghos          #+#    #+#             */
+/*   Updated: 2025/06/07 13:11:02 by vapoghos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
@@ -13,9 +25,18 @@
 
 # include "./Libft/libft.h"
 
+typedef struct s_pipe
+{
+	int		fd[2];
+	int		infile;
+	int		outfile;
+	pid_t	pid1;
+	pid_t	pid2;
+}	t_pipe;
+
 // Function declarations
-void	child_process(int infile, int fd[2], char *cmd1, char **envp);
-void	parent_process(int outfile, int fd[2], char *cmd2, char **envp);
+void	child_process(t_pipe *pip_m, char *cmd1, char **envp);
+void	parent_process(t_pipe *pip_m, char *cmd2, char **envp);
 void	exec_command(char *cmd, char **envp);
 
 //utils functions

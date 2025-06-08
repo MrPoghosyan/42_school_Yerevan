@@ -1,58 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/07 14:02:37 by vapoghos          #+#    #+#             */
+/*   Updated: 2025/06/07 14:03:27 by vapoghos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
-/*
-static char	*find_path(char *cmd, char **envp)
-{
-	char	**paths;
-	char	*path_line;
-	char	*full_path;
-	int		i;
-
-	path_line = get_path_line(envp);
-	if (!path_line)
-		return (NULL);
-	paths = ft_split(path_line, ':');
-	if (!paths)
-		return (NULL);
-	i = 0;
-	while (paths[i])
-	{
-		full_path = ft_strjoin3((const char *)paths[i],
-				(const char *)"/", (const char *)cmd);
-		if (!full_path)
-			return (free_split(paths), NULL);
-		if (access(full_path, X_OK) == 0)
-			return (free_split(paths), full_path);
-		free(full_path);
-		++i;
-	}
-	return (free_split(paths), NULL);
-}
-
-void	exec_command(char *cmd, char **envp)
-{
-	char	**args;
-	char	*path;
-
-	args = ft_split(cmd, ' ');
-	if (!args || !args[0])
-	{
-		perror("split");
-		exit(1);
-	}
-	path = find_path(args[0], envp);
-	if (!path)
-	{
-		perror(args[0]);
-		free_split(args);
-		exit(1);
-	}
-	execve(path, args, envp);
-	perror("execve");
-	free_split(args);
-	free(path);
-	exit(1);
-}
-*/
 
 void	exec_command(char *cmd, char **envp)
 {
@@ -62,7 +20,9 @@ void	exec_command(char *cmd, char **envp)
 	argv[1] = "-c";
 	argv[2] = cmd;
 	argv[3] = NULL;
-	execve("/bin/sh", argv, envp);
-	perror("execve");
-	exit(EXIT_FAILURE);
+	if (execve("/bin/sh", argv, envp) == -1)
+	{
+		perror("Execve error!");
+		exit(EXIT_FAILURE);
+	}
 }
