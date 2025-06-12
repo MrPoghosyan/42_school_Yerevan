@@ -34,33 +34,43 @@ static int has_valid_characters(t_map *map)
     return (1);
 }
 
+static int  has_valid_objects(t_map *map)
+{
+    if (map->players != 1) {
+        ft_printf("Error: Found %d players (need 1).\n", map->players);
+        return (0);
+    }
+    if (map->exits != 1) {
+        ft_printf("Error: Found %d exit (need 1).\n", map->exits);
+        return (0);
+    }
+    if (map->collectibles < 1) {
+        ft_printf("Error: No collectibles found.\n");
+        return (0);
+    }
+    return (1);
+}
+
 int validate_map_contents(t_map *map)
 {
     if (!is_rectangular(map)) {
-        ft_printf("Error: Map is not rectangular\n");
+        ft_printf("Error: Map is not rectangular.\n");
         return (0);
     }
     if (!has_valid_characters(map)) {
-        ft_printf("Error: Invalid characters in map\n");
+        ft_printf("Error: Invalid characters in map.\n");
         return (0);
     }
     if (!is_surrounded_by_walls(map)) {
-        ft_printf("Error: Map not surrounded by walls\n");
+        ft_printf("Error: Map not surrounded by walls.\n");
         return (0);
     }
     map->players = count_characters(map, 'P');
     map->exits = count_characters(map, 'E');
     map->collectibles = count_characters(map, 'C');
-    if (map->players != 1) {
-        ft_printf("Error: Found %d players (need 1)\n", map->players);
-        return (0);
-    }
-    if (map->exits < 1) {
-        ft_printf("Error: No exit found\n");
-        return (0);
-    }
-    if (map->collectibles < 1) {
-        ft_printf("Error: No collectibles found\n");
+    if (!has_valid_objects(map))
+    {
+        ft_printf("Error: Invalid objects in map.\n");
         return (0);
     }
     return (1);

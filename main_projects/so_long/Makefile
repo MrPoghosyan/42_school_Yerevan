@@ -11,9 +11,10 @@ SRCS = srcs/main.c \
        srcs/map_validation/read_map.c \
        srcs/map_validation/validate_contents.c \
        srcs/map_validation/walls_path.c \
-       srcs/utils.c \
        libs/gnl/get_next_line.c \
-       libs/gnl/get_next_line_utils.c
+       libs/gnl/get_next_line_utils.c \
+       srcs/utils.c srcs/graphics.c \
+	   srcs/input.c
 
 OBJS = $(SRCS:.c=.o)
 

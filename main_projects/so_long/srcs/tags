@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+check_file_exists	map_validation/check_file.c	/^int check_file_exists(char *file)$/;"	f
+check_file_extension	map_validation/check_file.c	/^int check_file_extension(char *file)$/;"	f
+count_characters	utils.c	/^int count_characters(t_map *map, char c)$/;"	f
+exit_with_error	utils.c	/^void exit_with_error(char *message, t_map *map)$/;"	f
+fill_map_grid	map_validation/read_map.c	/^static int fill_map_grid(t_map *map, char *file)$/;"	f	file:
+flood_fill	map_validation/walls_path.c	/^static void flood_fill(t_map *map, int x, int y, int *visited)$/;"	f	file:
+free_arr	utils.c	/^void free_arr(char **arr)$/;"	f
+get_map_height	map_validation/read_map.c	/^static int get_map_height(char *file)$/;"	f	file:
+has_valid_characters	map_validation/validate_contents.c	/^static int has_valid_characters(t_map *map)$/;"	f	file:
+has_valid_path	map_validation/walls_path.c	/^int has_valid_path(t_map *map)$/;"	f
+is_rectangular	map_validation/validate_contents.c	/^static int is_rectangular(t_map *map)$/;"	f	file:
+is_surrounded_by_walls	map_validation/walls_path.c	/^int is_surrounded_by_walls(t_map *map)$/;"	f
+main	main.c	/^int main(int argc, char **argv)$/;"	f
+read_map_file	map_validation/read_map.c	/^int read_map_file(char *file, t_map *map)$/;"	f
+validate_map	map_validation/map_validation.c	/^int validate_map(char *file, t_map *map)$/;"	f
+validate_map_contents	map_validation/validate_contents.c	/^int validate_map_contents(t_map *map)$/;"	f
