@@ -30,6 +30,8 @@ int	main(int argc, char **argv, char **envp)
 	parent_process(&pip_m, argv[3], envp);
 	close(pip_m.fd[0]);
 	close(pip_m.fd[1]);
+	close(pip_m.infile);
+	close(pip_m.outfile);
 	waitpid(pip_m.pid1, NULL, 0);
 	waitpid(pip_m.pid2, NULL, 0);
 	return (0);
