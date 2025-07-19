@@ -26,15 +26,17 @@ void	ft_sleep(int ms)
 
 	start = ft_gettime();
 	while (ft_gettime() - start < ms)
-		usleep(ms / 10);
+		usleep(500);
 }
 
 void	print_status(t_philo *philo, const char *status)
 {
 	pthread_mutex_lock(&philo->data->print);
 	if (!check_stop(philo->data) || ft_strncmp(status, "died", ft_strlen(status)) == 0)
-		printf("%lld %d %s\n", ft_gettime() - philo->data->
-				start_time, philo->id, status);
+		printf("%lld %d %s\n",
+				ft_gettime() - philo->data-> start_time,
+				philo->id,
+				status);
 	pthread_mutex_unlock(&philo->data->print);
 }
 

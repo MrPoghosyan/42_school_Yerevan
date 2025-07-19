@@ -56,6 +56,7 @@ int	init_data(t_data *data, int argc, char **argv)
 	if (init_mutexes(data))
 	{
 		free(data->forks);
+		data->forks = NULL;
 		return (1);
 	}
 	return (0);

@@ -26,8 +26,8 @@ static bool	check_meal_completion(t_data *data)
 {
 	int	i;
 
-	if (data->must_eat == 0)
-		return (true);
+	if (data->must_eat <= 0)
+		return (false);
 	i = 0;
 	while (i < data->num_philos)
 	{
@@ -75,13 +75,8 @@ void	*monitor_routine(void *arg)
 	while (true)
 	{
 		if (check_philosopher_death(data))
-		{
-			pthread_mutex_lock(&data->stop_mtx);
-			data->stop = true;
-			pthread_mutex_unlock(&data->stop_mtx);
 			return (NULL);
-		}
-		if (data->must_eat > 0 && check_meal_completion(data))
+		if (check_meal_completion(data))
 		{
 			pthread_mutex_lock(&data->stop_mtx);
 			data->stop = true;
