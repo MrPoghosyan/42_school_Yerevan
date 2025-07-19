@@ -25,7 +25,7 @@ bool	validate_args(t_data *data, int argc, char **argv)
 			return (false);
 		++i;
 	}
-	if (data->num_philos <= 1 || data->num_philos > PHILO_MAX)
+	if (data->num_philos <= 0 || data->num_philos > PHILO_MAX)
 		return (false);
 	if (data->time_to_die <= 0 || data->time_to_eat <= 0
 		|| data->time_to_sleep <= 0)

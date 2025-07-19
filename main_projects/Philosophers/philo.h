@@ -65,6 +65,7 @@ long long	ft_gettime(void);
 void		ft_sleep(int ms);
 void		cleanup(t_data *data);
 void		print_status(t_philo *philo, const char *status);
+void		start_eating(t_philo *philo);
 
 // init.c
 int			init_data(t_data *data, int argc, char **argv);
@@ -74,6 +75,8 @@ int			init_philos(t_data *data);
 void		*philo_routine(void *arg);
 void		take_forks(t_philo *philo);
 void		releases_forks(t_philo *philo);
+void		safe_mutex_lock(pthread_mutex_t *mutex);
+void		safe_mutex_unlock(pthread_mutex_t *mutex);
 
 //monitor.c
 void		*monitor_routine(void *arg);
@@ -84,5 +87,7 @@ bool	is_valid_number(const char *str);
 bool	validate_args(t_data *data, int argc, char **argv);
 
 int			ft_atoi(const char *nptr);
+size_t		ft_strlen(const char *s);
+int			ft_strncmp(const char *str1, const char *str2, size_t n);
 
 #endif

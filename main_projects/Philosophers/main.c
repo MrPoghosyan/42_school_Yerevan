@@ -44,25 +44,23 @@ static int	start_thread(pthread_t *thread, void *(*func)(void *), void *arg)
 	}
 	return (0);
 }
-
-static int	start_simulation(t_data *data)
+static int start_simulation(t_data *data)
 {
-	int			i;
-	pthread_t	monitor;
+    int i;
+    pthread_t monitor;
 
-	i = 0;
-	while (i < data->num_philos)
-	{
-		if (start_thread(&data->philos[i].thread, philo_routine,
+    i = -1;
+    while (++i < data->num_philos)
+    {
+        if (start_thread(&data->philos[i].thread, philo_routine,
 				&data->philos[i]))
-			return (1);
-		i++;
-	}
-	if (start_thread(&monitor, monitor_routine, data))
-		return (1);
-	i = -1;
-	while (++i < data->num_philos)
-		pthread_join(data->philos[i].thread, NULL);
-	pthread_join(monitor, NULL);
-	return (0);
+            return (1);
+    }
+    if (start_thread(&monitor, monitor_routine, data))
+        return (1);
+    i = -1;
+    while (++i < data->num_philos)
+        pthread_join(data->philos[i].thread, NULL);
+    pthread_join(monitor, NULL);
+    return (0);
 }

@@ -1,7 +1,7 @@
 NAME	= philo
 
-SRCS	= main.c init.c utils.c actions.c monitor.c \
-		  valid.c ft_atoi.c
+SRCS	= main.c init.c utils.c actions.c monitor.c valid.c\
+		  ft_atoi.c ft_strlen.c ft_strncmp.c
 OBJS	= $(SRCS:.c=.o)
 
 CC		= cc

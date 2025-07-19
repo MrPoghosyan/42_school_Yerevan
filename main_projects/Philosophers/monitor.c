@@ -75,15 +75,20 @@ void	*monitor_routine(void *arg)
 	while (true)
 	{
 		if (check_philosopher_death(data))
-			break ;
-		if (data->must_eat != -1 && check_meal_completion(data))
 		{
 			pthread_mutex_lock(&data->stop_mtx);
 			data->stop = true;
 			pthread_mutex_unlock(&data->stop_mtx);
-			break ;
+			return (NULL);
 		}
-		ft_sleep(5);
+		if (data->must_eat > 0 && check_meal_completion(data))
+		{
+			pthread_mutex_lock(&data->stop_mtx);
+			data->stop = true;
+			pthread_mutex_unlock(&data->stop_mtx);
+			return (NULL);
+		}
+		usleep(1000);
 	}
 	return (NULL);
 }

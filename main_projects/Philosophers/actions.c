@@ -53,23 +53,31 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	safe_mutex_lock(&philo->data->stop_mtx);
-	philo->last_meal = philo->data->start_time;
-	safe_mutex_unlock(&philo->data->stop_mtx);
 	if (philo->id % 2 == 0)
-		ft_sleep(8);
+		ft_sleep(philo->data->time_to_eat / 2);
+	if (philo->data->num_philos == 1)
+	{
+		print_status(philo, "has taken a fork");
+		ft_sleep(philo->data->time_to_die);
+		print_status(philo, "died");
+		return (NULL);
+	}
 	while (!check_stop(philo->data))
 	{
 		take_forks(philo);
-		print_status(philo, "is eating");
-		safe_mutex_lock(&philo->data->stop_mtx);
-		philo->last_meal = ft_gettime();
-		philo->eat_count++;
-		safe_mutex_unlock(&philo->data->stop_mtx);
-		ft_sleep(philo->data->time_to_eat);
+		if (check_stop(philo->data))
+		{
+			releases_forks(philo);
+			break ;
+		}
+		start_eating(philo);
 		releases_forks(philo);
+		if (check_stop(philo->data))
+			break ;
 		print_status(philo, "is sleeping");
 		ft_sleep(philo->data->time_to_sleep);
+		if (check_stop(philo->data))
+			break ;
 		print_status(philo, "is thinking");
 	}
 	return (NULL);
