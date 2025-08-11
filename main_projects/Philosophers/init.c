@@ -34,6 +34,8 @@ static int	init_mutexes(t_data *data)
 		return (1);
 	if (init_single_mutex(&data->stop_mtx))
 		return (1);
+	if (init_single_mutex(&data->meal_mtx))
+		return (1);
 	return (0);
 }
 
@@ -68,6 +70,9 @@ int	init_philos(t_data *data)
 
 	data->philos = malloc(sizeof(t_philo) * data->num_philos);
 	if (!data->philos)
+		return (1);
+	data->finished_count = 0;
+	if (init_single_mutex(&data->meal_mtx))
 		return (1);
 	data->start_time = ft_gettime();
 	i = -1;

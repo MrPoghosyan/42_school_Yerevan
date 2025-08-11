@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   monitor.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 11:36:14 by vapoghos          #+#    #+#             */
-/*   Updated: 2025/06/24 11:36:18 by vapoghos         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   monitor.c										  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: vapoghos <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2025/06/24 11:36:14 by vapoghos		  #+#	#+#			 */
+/*   Updated: 2025/06/24 11:36:18 by vapoghos		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -22,49 +22,49 @@ bool	check_stop(t_data *data)
 	return (stop);
 }
 
-static bool	check_meal_completion(t_data *data)
-{
-	int	i;
-
-	if (data->must_eat <= 0)
-		return (false);
-	i = 0;
-	while (i < data->num_philos)
-	{
-		pthread_mutex_lock(&data->stop_mtx);
-		if (data->philos[i].eat_count < data->must_eat)
-		{
-			pthread_mutex_unlock(&data->stop_mtx);
-			return (false);
-		}
-		pthread_mutex_unlock(&data->stop_mtx);
-		++i;
-	}
-	return (true);
-}
-
 static bool	check_philosopher_death(t_data *data)
 {
 	int			i;
 	long long	current_time;
+	bool		someone_died;
 
-	i = 0;
-	current_time = ft_gettime();
-	while (i < data->num_philos)
+	i = -1;
+	someone_died = false;
+	while (++i < data->num_philos)
 	{
-		pthread_mutex_lock(&data->stop_mtx);
-		if (current_time - data->philos[i].last_meal
-			> data->time_to_die && !data->stop)
+		pthread_mutex_lock(&data->meal_mtx);
+		current_time = ft_gettime();
+		if (current_time - data->philos[i].last_meal > data->time_to_die)
 		{
-			data->stop = true;
-			pthread_mutex_unlock(&data->stop_mtx);
-			print_status(&data->philos[i], "died");
+			pthread_mutex_lock(&data->stop_mtx);
+			if (!data->stop)
+			{
+				data->stop = true;
+				pthread_mutex_unlock(&data->stop_mtx);
+				print_status(&data->philos[i], "died");
+				someone_died = true;
+			}
+			else
+			{
+				pthread_mutex_unlock(&data->stop_mtx);
+			}
+			pthread_mutex_unlock(&data->meal_mtx);
 			return (true);
 		}
-		pthread_mutex_unlock(&data->stop_mtx);
-		++i;
+		pthread_mutex_unlock(&data->meal_mtx);
 	}
-	return (false);
+	return (someone_died);
+}
+
+static bool	check_meal_completion(t_data *data)
+{
+	bool	all_ate;
+
+	pthread_mutex_lock(&data->meal_mtx);
+	all_ate = (data->must_eat > 0) && (data->finished_count
+			>= data->num_philos);
+	pthread_mutex_unlock(&data->meal_mtx);
+	return (all_ate);
 }
 
 void	*monitor_routine(void *arg)

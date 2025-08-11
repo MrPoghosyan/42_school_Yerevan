@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vapoghos <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 11:35:26 by vapoghos          #+#    #+#             */
-/*   Updated: 2025/06/24 11:35:34 by vapoghos         ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   main.c											 :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: vapoghos <marvin@42.fr>					+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2025/06/24 11:35:26 by vapoghos		  #+#	#+#			 */
+/*   Updated: 2025/06/24 11:35:34 by vapoghos		 ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "philo.h"
@@ -31,7 +31,6 @@ int	main(int argc, char **argv)
 	if (start_simulation(&data))
 		return (cleanup(&data), printf(ERR_THREAD), 1);
 	cleanup(&data);
-//	printf("Everyone got full at once!\n");
 	return (0);
 }
 
@@ -44,23 +43,24 @@ static int	start_thread(pthread_t *thread, void *(*func)(void *), void *arg)
 	}
 	return (0);
 }
-static int start_simulation(t_data *data)
-{
-    int i;
-    pthread_t monitor;
 
-    i = -1;
-    while (++i < data->num_philos)
-    {
-        if (start_thread(&data->philos[i].thread, philo_routine,
+static int	start_simulation(t_data *data)
+{
+	int			i;
+	pthread_t	monitor;
+
+	i = -1;
+	while (++i < data->num_philos)
+	{
+		if (start_thread(&data->philos[i].thread, philo_routine,
 				&data->philos[i]))
-            return (1);
-    }
-    if (start_thread(&monitor, monitor_routine, data))
-        return (1);
-    i = -1;
-    while (++i < data->num_philos)
-        pthread_join(data->philos[i].thread, NULL);
-    pthread_join(monitor, NULL);
-    return (0);
+			return (1);
+	}
+	if (start_thread(&monitor, monitor_routine, data))
+		return (1);
+	i = -1;
+	while (++i < data->num_philos)
+		pthread_join(data->philos[i].thread, NULL);
+	pthread_join(monitor, NULL);
+	return (0);
 }

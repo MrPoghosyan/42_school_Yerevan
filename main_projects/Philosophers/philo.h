@@ -52,17 +52,19 @@ struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				must_eat;
+	int				finished_count;
 	bool			stop;
 	long long		start_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print;
 	pthread_mutex_t	stop_mtx;
+	pthread_mutex_t	meal_mtx;
 	t_philo			*philos;
 };
 
 // utils.c
 long long	ft_gettime(void);
-void		ft_sleep(int ms);
+void		ft_sleep(int ms, t_data *data);
 void		cleanup(t_data *data);
 void		print_status(t_philo *philo, const char *status);
 void		start_eating(t_philo *philo);
@@ -83,8 +85,8 @@ void		*monitor_routine(void *arg);
 bool		check_stop(t_data *data);
 
 //valid.c
-bool	is_valid_number(const char *str);
-bool	validate_args(t_data *data, int argc, char **argv);
+bool		is_valid_number(const char *str);
+bool		validate_args(t_data *data, int argc, char **argv);
 
 int			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
