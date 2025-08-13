@@ -1,0 +1,151 @@
+Assignment name   : broken_GNL
+Expected files    : get_next_line.c get_next_line.h
+Allowed functions : read, free, malloc
+--------------------------------------------------------------------------------
+
+Repair the function 'get_next_line' in the file get_next_line.c which prototype
+should be:
+char	*get_next_line(int fd);
+
+You may need to repair other functions as well.
+
+
+
+Description of the 'get_next_line' function:
+
+Your function must return a line that has been read from the file descriptor
+passed as parameter.
+
+What we call a "line that has been read" is a succession of 0 to n characters
+that end with '\n' (ascii code 0x0a) or with End Of File (EOF).
+
+The line should be returned including the '\n' in case there is one at the end
+of the line that has been read.
+
+When you've reached the EOF, you must store the current buffer in a char * and
+return it. If the buffer is empty you must return NULL.
+
+In case of error return NULL.
+
+In case of not returning NULL, the pointer should be free-able.
+
+Your program will be compiled with the flag -D BUFFER_SIZE=xx, which has to be
+used as the buffer size for the read calls in your functions.
+
+Your function must be memory leak free.
+
+When you've reached the EOF, your function should keep 0 memory allocated with
+malloc except the line that has been returned.
+
+Calling your function get_next_line in a loop will therefore allow you to read
+the text available on a file descriptor one line at a time until the end of the
+text, no matter the size of either the text or one of its lines.
+
+Make sure that your function behaves well when it reads from a file, from the
+standard output, from a redirection etc.
+
+No call to another function will be done on the file descriptor between 2 calls
+of get_next_line.
+
+Finally we consider that get_next_line has an undefined behavior when reading
+from a binary file.
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   broken_gnl.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: erazumov <erazumov@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/11 16:56:00 by erazumov          #+#    #+#             */
+/*   Updated: 2025/07/18 15:42:59 by erazumov         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "get_next_line.h"
+
+char	*ft_strchr(char *s, int c)
+{
+	int	i = 0;
+	while (s[i] != c)
+		i++;
+	if (s[i] == c)
+		return (s + i);
+	else
+		return (NULL);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	while (--n > 0)
+		((char *)dest)[n - 1] = ((char *)src)[n - 1];
+	return (dest);
+}
+
+size_t	ft_strlen(char *s)
+{
+	size_t	ret = 0;
+	while (*s)
+	{
+		s++;
+		ret++;
+	}
+	return (ret);
+}
+
+int	str_append_mem(char **s1, char *s2, size_t size2)
+{
+	size_t	size1 = ft_strlen(*s1);
+	char	*tmp = malloc(size2 + size1 + 1);
+	if (!tmp)
+		return (0);
+	ft_memcpy(tmp, *s1, size1);
+	ft_memcpy(tmp + size1, s2, size2);
+	tmp [size1 + size2] = 0;
+	free(*s1);
+	*s1 = tmp;
+	return (1);
+}
+
+int	str_append_str(char **s1, char *s2)
+{
+	return (str_append_mem(s1, s2, ft_strlen(s2)));
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	if (dest > src)
+		return (ft_memcpy(dest, src, n));
+	else if (dest == src)
+		return (dest);
+	size_t	i = ft_strlen((char *)src) - 1;
+	while (i >= 0)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i--;
+	}
+	return (dest);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	b[BUFFER_SIZE + 1] = "";
+	char	*ret = NULL;
+
+	char	*tmp = ft_strchr(b, '\n');
+	while (!tmp)
+	{
+		if (!str_append_str(&ret, b))
+			return (NULL);
+		int	read_ret = read(fd, b, BUFFER_SIZE);
+		if (read_ret == -1)
+			return (NULL);
+		b[read_ret] = 0;
+	}
+	if (!str_append_mem(&ret, b, tmp - b + 1))
+	{
+		free(ret);
+		return (NULL);
+	}
+	return (ret);
+}
