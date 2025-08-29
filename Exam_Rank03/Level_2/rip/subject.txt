@@ -1,0 +1,60 @@
+Assignment name: rip
+Expected files: *.c *.h
+Allowed functions: puts, write
+--------------------------------------------------------------------------------
+Write a program that will take as argument a string containing only parenthesis.
+If parenthesis are unbalanced (for example "())") your program shall remove the
+minimum number of parenthesis for the expression to be balanced.
+By removing we mean replacing by spaces.
+You will print all the solutions (can be more than one).
+The order of the solutions is not important.
+For example this should work:
+(For readability reasons the '_' means space and the spaces are for readability only.)
+$> ./rip '( ( )' | cat -e
+_ ( ) $
+( _ ) $
+$> ./rip '( ( ( ) ( ) ( ) ) ( ) )' | cat -e
+( ( ( ) ( ) ( ) ) ( ) ) $
+$> ./rip '( ) ( ) ) ( )' | cat -e
+( ) ( ) _ ( ) $
+( ) ( _ ) ( ) $
+( _ ( ) ) ( ) $
+$> ./rip '( ( ) ( ( ) (' | cat -e
+( ( ) _ _ ) _ $
+( _ ) ( _ ) _ $
+( _ ) _ ( ) _ $
+_ ( ) ( _ ) _ $
+_ ( ) _ ( ) _ $
+
+
+Այս rip առաջադրանքը "remove invalid parentheses" խնդիրն է, բայց output–ում պահանջվում է բոլոր հնարավոր լուծումները (առանց կրկնությունների) այնպես, որ մնացած փակագծերը լինեն բալանսավորված։
+
+Քանի որ թույլատրված են միայն puts, write, մենք պետք է ամեն ինչ անենք ձեռքով՝ առանց malloc (չի պահանջվում), պարզապես backtracking + չկրկնվող լուծումների պահպանում։
+
+Քայլ առ քայլ բացատրություն
+
+Խնդիրը
+Տրված է string, որը պարունակում է միայն ( և )։ Պետք է հեռացնել ամենաքիչ հնարավոր փակագծեր (նրանց փոխարինելով ' '–ով), որպեսզի string–ը լինի բալանսավորված։
+Եթե կան մի քանի տարբեր ճանապարհներ, պետք է տպել բոլոր լուծումները։
+
+Ինչպես գտնել «ամենաքիչ հեռացվող փակագծերի թիվը»
+
+Անել scan․ հաշվել invalid_left և invalid_right:
+
+երբ տեսնում ենք ( → ավելացնում ենք left
+
+երբ տեսնում ենք ) → եթե կա բացված (, փակում ենք, այլապես ավելացնում ենք invalid_right
+Վերջում invalid_left + invalid_right = նվազագույն հեռացվող փակագծերի թիվը։
+
+Backtracking / DFS
+
+Գնալ string–ի վրայով։
+
+Եթե ( ունենք և դեռ պետք է ջնջենք, կարող ենք կամ թողնել այն, կամ փոխարինել space–ով։
+
+Նույնը )–ի համար։
+
+Եթե հասանք վերջում՝ ստուգում ենք, որ մնացած փակագծերը balanced են։
+
+Կրկնություններից խուսափել
+Նույն string–ը կարող է առաջանալ տարբեր delete–ի order–ներով։ Պետք է printing–ի ժամանակ չկրկնենք։ Կարող ենք պահել solutions array (բայց memory թույլ չի տրվում շատ), կամ օգտագործել «skip consecutive duplicates» հնարքը backtracking–ի ժամանակ։
