@@ -68,7 +68,8 @@ long long	ft_gettime(void);
 void		ft_sleep(int ms, t_data *data);
 void		cleanup(t_data *data);
 void		print_status(t_philo *philo, const char *status);
-void		start_eating(t_philo *philo);
+bool		is_full(t_philo *philo);
+void		smart_thinking(t_philo *philo);
 
 // init.c
 int			init_data(t_data *data, int argc, char **argv);
@@ -88,7 +89,7 @@ bool		check_stop(t_data *data);
 //valid.c
 bool		is_valid_number(const char *str);
 bool		validate_args(t_data *data, int argc, char **argv);
-void    single_philo(t_philo *philo);
+void		single_philo(t_philo *philo);
 
 int			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);

@@ -83,25 +83,52 @@ void philo_eat(t_philo *philo)
     releases_forks(philo);
 }
 
-void	*philo_routine(void *arg)
+void    *philo_routine(void *arg)
 {
-	t_philo	*philo;
+    t_philo *philo;
 
-	philo = (t_philo *)arg;
-	if (philo->id % 2 == 0)
-		ft_sleep(philo->data->time_to_eat / 2, philo->data);
-	if (philo->data->num_philos == 1)
-		return (single_philo(philo), NULL);
-	while (!check_stop(philo->data))
-	{
-		philo_eat(philo);
-		if (check_stop(philo->data))
-			break ;
-		print_status(philo, "is sleeping");
-		ft_sleep(philo->data->time_to_sleep, philo->data);
-		if (check_stop(philo->data))
-			break ;
-		print_status(philo, "is thinking");
-	}
-	return (NULL);
+    philo = (t_philo *)arg;
+    if (philo->id % 2 == 0)
+        ft_sleep(philo->data->time_to_eat / 2, philo->data);
+    if (philo->data->num_philos == 1)
+        return (single_philo(philo), NULL);
+
+    while (!check_stop(philo->data) && !is_full(philo))
+    {
+        philo_eat(philo);
+        if (check_stop(philo->data) || is_full(philo))
+            break;
+        print_status(philo, "is sleeping");
+        ft_sleep(philo->data->time_to_sleep, philo->data);
+        if (check_stop(philo->data) || is_full(philo))
+            break;
+        print_status(philo, "is thinking");
+        smart_thinking(philo);  // <- ՓՈԽԱՐԻՆԵԼ ՍՏԱՏԻԿ THINKING-Ը
+    }
+    return (NULL);
 }
+/*
+void    *philo_routine(void *arg)
+{
+    t_philo *philo;
+
+    philo = (t_philo *)arg;
+    if (philo->id % 2 == 0)
+        ft_sleep(philo->data->time_to_eat / 2, philo->data);
+    if (philo->data->num_philos == 1)
+        return (single_philo(philo), NULL);
+    
+    while (!check_stop(philo->data) && !is_full(philo))
+    {
+        philo_eat(philo);
+        if (check_stop(philo->data) || is_full(philo))
+            break;
+        print_status(philo, "is sleeping");
+        ft_sleep(philo->data->time_to_sleep, philo->data);
+        if (check_stop(philo->data) || is_full(philo))
+            break;
+        print_status(philo, "is thinking");
+    }
+    return (NULL);
+}
+*/
