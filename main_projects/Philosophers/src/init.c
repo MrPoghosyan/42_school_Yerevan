@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includ/philo.h"
 
 static int	init_single_mutex(pthread_mutex_t *mutex)
 {

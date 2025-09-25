@@ -10,7 +10,7 @@
 /*																			*/
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includ/philo.h"
 
 static int	start_simulation(t_data *data);
 static int	start_thread(pthread_t *thread, void *(*func)(void *), void *arg);

@@ -13,17 +13,13 @@
 #ifndef PHILO_H
 # define PHILO_H
 
-/*       <pathread.h>
- * pthread_create, pthread_detach, pthread_join, pthread_mutex_init,
- * pthread_mutex_destroy, pthread_mutex_lock or pthread_mutex_unlock.
- */
-# include <pthread.h> 
-# include <stdlib.h>	//free(), malloc()
-# include <string.h>	//memset()
-# include <stdio.h>		//printf()
-# include <unistd.h>	//write(), usleep()
-# include <sys/time.h>	//gettimeofday()
-# include <stdbool.h>	//type for bool
+# include <pthread.h>
+# include <stdlib.h>	
+# include <string.h>	
+# include <stdio.h>		
+# include <unistd.h>	
+# include <sys/time.h>	
+# include <stdbool.h>	
 
 # define PHILO_MAX 250
 
@@ -68,8 +64,12 @@ long long	ft_gettime(void);
 void		ft_sleep(int ms, t_data *data);
 void		cleanup(t_data *data);
 void		print_status(t_philo *philo, const char *status);
+
+// utils_2.c
 bool		is_full(t_philo *philo);
 void		smart_thinking(t_philo *philo);
+void		safe_mutex_lock(pthread_mutex_t *mutex);
+void		safe_mutex_unlock(pthread_mutex_t *mutex);
 
 // init.c
 int			init_data(t_data *data, int argc, char **argv);
@@ -79,8 +79,6 @@ int			init_philos(t_data *data);
 void		*philo_routine(void *arg);
 void		take_forks(t_philo *philo);
 void		releases_forks(t_philo *philo);
-void		safe_mutex_lock(pthread_mutex_t *mutex);
-void		safe_mutex_unlock(pthread_mutex_t *mutex);
 
 //monitor.c
 void		*monitor_routine(void *arg);
@@ -88,9 +86,15 @@ bool		check_stop(t_data *data);
 
 //valid.c
 bool		is_valid_number(const char *str);
+bool		check_numbers(int argc, char **argv);
+bool		check_philo_count(t_data *data);
+bool		check_times(t_data *data);
+
+// valid_2.c
 bool		validate_args(t_data *data, int argc, char **argv);
 void		single_philo(t_philo *philo);
 
+// Declare function prototypes (with bool return type)
 int			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
 int			ft_strncmp(const char *str1, const char *str2, size_t n);

@@ -1,11 +1,13 @@
 NAME	= philo
 
-SRCS	= main.c init.c utils.c actions.c monitor.c valid.c\
-		  ft_atoi.c ft_strlen.c ft_strncmp.c
+SRCS	= src/main.c src/init.c src/utils.c src/utils_2.c src/actions.c\
+		  src/monitor.c src/valid.c src/valid_2.c\
+		  src/ft_atoi.c src/ft_strlen.c src/ft_strncmp.c
 OBJS	= $(SRCS:.c=.o)
 
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -pthread
+CFLAGS	= -Wall -Wextra -Werror -pthread -I./includ  # Added -I./includ
+
 DEBUG_THREAD = -g -fsanitize=thread
 DEBUG_ADDRESS = -g -fsanitize=address
 DEBUG_UNDEF = -g -fsanitize=undefined
@@ -36,3 +38,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re debug_thread debug_address debug_undef
+
