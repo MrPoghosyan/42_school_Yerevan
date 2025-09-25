@@ -61,28 +61,13 @@ void	cleanup(t_data *data)
 	pthread_mutex_destroy(&data->meal_mtx);
 }
 
-void	print_status(t_philo *philo, const char *status)
+void print_status(t_philo *philo, const char *status)
 {
-	pthread_mutex_lock(&philo->data->print);
-	if (!check_stop(philo->data))
-		printf("%lld %d %s\n", ft_gettime() - philo->data->start_time,
-			philo->id, status);
-	pthread_mutex_unlock(&philo->data->print);
-}
-
-void	start_eating(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->data->meal_mtx);
-	philo->last_meal = ft_gettime();
-	pthread_mutex_unlock(&philo->data->meal_mtx);
-	print_status(philo, "is eating");
-	ft_sleep(philo->data->time_to_eat, philo->data);
-	pthread_mutex_lock(&philo->data->meal_mtx);
-	philo->eat_count++;
-	if (philo->data->must_eat > 0 && philo->eat_count
-		>= philo->data->must_eat)
-	{
-		philo->data->finished_count++;
-	}
-	pthread_mutex_unlock(&philo->data->meal_mtx);
+    pthread_mutex_lock(&philo->data->print);
+    if (!check_stop(philo->data) || ft_strncmp(status, "died", 4) == 0)
+    {
+        printf("%lld %d %s\n", ft_gettime() - philo->data->start_time,
+               philo->id, status);
+    }
+    pthread_mutex_unlock(&philo->data->print);
 }

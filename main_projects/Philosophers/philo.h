@@ -39,6 +39,7 @@ typedef struct s_philo
 	int				id;
 	int				eat_count;
 	long long		last_meal;
+	bool			finished;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
@@ -87,6 +88,7 @@ bool		check_stop(t_data *data);
 //valid.c
 bool		is_valid_number(const char *str);
 bool		validate_args(t_data *data, int argc, char **argv);
+void    single_philo(t_philo *philo);
 
 int			ft_atoi(const char *nptr);
 size_t		ft_strlen(const char *s);
