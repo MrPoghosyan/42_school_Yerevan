@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdlib.h>
+#include <errno.h>
 #include <sys/wait.h>
 #include <sys/types.h>
 
@@ -56,8 +57,6 @@ int	picoshell(char **cmds[])
 	int		pipefd[2];
 	int		prev_fd = -1;
 	int		has_next;
-	int		status;
-	int		exit_code = 0;
 	int		i = 0;
 
 	if (!cmds)
@@ -79,28 +78,7 @@ int	picoshell(char **cmds[])
 		prev_fd = parent_proces(pipefd, prev_fd, has_next);
 		++i;
 	}
-	while (wait(&status) != -1)
-	{
-		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-			exit_code = 1;
-	}
-	return (exit_code);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-    //"ls -l | grep txt | wc -l"
-    char *cmd1[] = {"ls", "-l", NULL};
-    char *cmd2[] = {"grep", "txt", NULL};
-    char *cmd3[] = {"wc", "-l", NULL};
-    char **cmds[] = {cmd1, cmd2, cmd3, NULL};
-
-    printf("Exit code: %d\n", picoshell(cmds));
-	/*  ./a.out
-	 * 1
-	 * Exit code: 0
-	 */
-    return 0;
+	while (wait(NULL) > 0)
+		;
+	return (0);
 }

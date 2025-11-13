@@ -28,7 +28,7 @@ static void child_proces(const char *file, char *const argv[], char type, int *f
 	close(fd[1]);
 	close(fd[0]);
 	execvp(file, argv);
-	close_fd_error(fd);
+	exit(1);
 }
 
 static int parent_proces(char type, int *fd)
