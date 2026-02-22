@@ -16,8 +16,6 @@ int main(int argc, char **argv)
 					std::toupper(static_cast<unsigned char>(s[i]))
 					);
 		}
-		if (j < argc -1)
-			std::cout << " ";
 	}
 	std::cout << "\n";
 	return 0;
