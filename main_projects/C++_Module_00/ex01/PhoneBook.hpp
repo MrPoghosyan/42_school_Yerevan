@@ -26,5 +26,6 @@ class PhoneBook{
 
 bool	askNonEmpty(const std::string &prompt, std::string &field);
 bool	isValidPhone(const std::string& str);
+bool	isValidAlpha(const std::string& str);
 
 #endif

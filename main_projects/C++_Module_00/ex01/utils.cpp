@@ -40,3 +40,12 @@ bool	isValidPhone(const std::string& str)
 	}
 	return hasDigit;
 }
+
+bool isValidAlpha(const std::string& str)
+{
+	for (size_t i = 0; i < str.length(); ++i){
+		if (!std::isalpha(static_cast<unsigned char>(str[i])))
+			return false;
+	}
+	return true;
+}

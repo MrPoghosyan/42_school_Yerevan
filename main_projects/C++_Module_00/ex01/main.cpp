@@ -12,9 +12,10 @@ int main()
 			std::cout << std::endl;
 			break;
 		}
+/*
 		for (size_t i = 0; i < command.length(); ++i)
 			command[i] = std::toupper(static_cast<unsigned char>(command[i]));
-
+*/
 		if (command == "ADD")
 			phonebook.addContact();
 		else if (command == "SEARCH") {

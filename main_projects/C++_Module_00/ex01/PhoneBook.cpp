@@ -42,11 +42,22 @@ void	PhoneBook::addContact() {
 	int index;
 	std::string input;
 
-	if (!askNonEmpty("First name: ", input))
-		return;
+	while (true){
+		if (!askNonEmpty("First name: ", input))
+			return;
+		if (isValidAlpha(input))
+			break;
+		std::cout << "Invalid First name! Only letters allowed." << std::endl;
+	}
 	c.setFirstName(input);
-	if (!askNonEmpty("Last name: ", input))
-		return;
+	while(true){
+		if (!askNonEmpty("Last name: ", input))
+			return;
+		if (isValidAlpha(input))
+			break;
+		std::cout << "Invalid Last name! Only letters allowed." << std::endl;
+
+	}
 	c.setLastName(input);
 	if (!askNonEmpty("Nickname: ", input))
 		return;
