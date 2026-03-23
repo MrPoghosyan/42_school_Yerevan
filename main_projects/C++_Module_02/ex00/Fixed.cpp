@@ -2,9 +2,9 @@
 #include <iostream>
 
 Fixed::Fixed()
+	:_value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
-	setRawBits(0);
 }
 
 Fixed::Fixed( const Fixed& other )
@@ -24,7 +24,7 @@ Fixed& Fixed::operator=(const Fixed& other)
 	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &other)
-		this->_value = other.getRawBits();
+		setRawBits(other.getRawBits());
 
 	return *this;
 }
