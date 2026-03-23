@@ -2,9 +2,9 @@
 #include <iostream>
 
 Fixed::Fixed()
-	:_value(0)
 {
 	std::cout << "Default constructor called" << std::endl;
+	setRawBits(0);
 }
 
 Fixed::Fixed( const Fixed& other )
