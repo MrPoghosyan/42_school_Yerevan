@@ -3,7 +3,7 @@ NAME	= ClapTrap
 CPPC		= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRC	= main.cpp ClapTrap.cpp
+SRC	= main.cpp ScavTrap.cpp FragTrap.hpp ClapTrap.cpp
 OBJ	= $(SRC:.cpp=.o)
 
 # Targets

@@ -1,4 +1,4 @@
-NAME	= clapTrap
+NAME	= ClapTrap
 
 CPPC		= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
