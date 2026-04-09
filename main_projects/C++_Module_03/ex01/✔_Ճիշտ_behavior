@@ -1,0 +1,216 @@
+
+========== BASIC CLAPTRAP ==========
+
+ClapTrap A has been created!
+ClapTrap A | HP: 10 | EP: 10 | AD: 0
+ClapTrap A attacks target, causing 0 points of damage!
+ClapTrap A takes 5 points of damage! Hit points left: 5
+ClapTrap A repairs itself for 3 points! Hit points: 8, Energy points: 8
+ClapTrap A | HP: 8 | EP: 8 | AD: 0
+ClapTrap A takes 100 points of damage! Hit points left: 0
+ClapTrap A cannot attack (no energy or hit points left)!
+ClapTrap A cannot repair itself!
+
+========== SCAVTRAP CONSTRUCTION ==========
+
+ClapTrap B has been created!
+ScavTrap B has been created!
+ClapTrap B | HP: 100 | EP: 50 | AD: 20
+
+========== SCAVTRAP ACTIONS ==========
+
+ScavTrap B attacks enemy, causing 20 points of damage!
+ClapTrap B takes 30 points of damage! Hit points left: 70
+ClapTrap B repairs itself for 10 points! Hit points: 80, Energy points: 48
+ScavTrap B is now in Gate keeper mode!
+ClapTrap B | HP: 80 | EP: 48 | AD: 20
+
+========== ENERGY EXHAUSTION ==========
+
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B attacks dummy, causing 20 points of damage!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ScavTrap B cannot attack!
+ClapTrap B | HP: 80 | EP: 0 | AD: 20
+
+========== DEAD STATE TEST ==========
+
+ClapTrap B takes 200 points of damage! Hit points left: 0
+ScavTrap B cannot attack!
+ClapTrap B cannot repair itself!
+
+========== COPY TEST (FRESH OBJECT) ==========
+
+ClapTrap Fresh has been created!
+ScavTrap Fresh has been created!
+ClapTrap Fresh copied!
+ScavTrap Fresh copied!
+ClapTrap Fresh | HP: 100 | EP: 50 | AD: 20
+ScavTrap Fresh attacks copy_target, causing 20 points of damage!
+ScavTrap Fresh is now in Gate keeper mode!
+
+========== COPY TEST (EXHAUSTED OBJECT) ==========
+
+ClapTrap Exhausted has been created!
+ScavTrap Exhausted has been created!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted attacks dummy, causing 20 points of damage!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ScavTrap Exhausted cannot attack!
+ClapTrap Exhausted copied!
+ScavTrap Exhausted copied!
+ScavTrap Exhausted cannot attack!
+
+========== ASSIGNMENT TEST (FRESH) ==========
+
+ClapTrap D has been created!
+ScavTrap D has been created!
+ClapTrap Fresh | HP: 100 | EP: 50 | AD: 20
+ScavTrap Fresh attacks assigned_target, causing 20 points of damage!
+
+========== ASSIGNMENT TEST (EXHAUSTED) ==========
+
+ClapTrap E has been created!
+ScavTrap E has been created!
+ScavTrap Exhausted cannot attack!
+
+========== SELF ASSIGNMENT ==========
+
+ScavTrap Fresh attacks self_assign, causing 20 points of damage!
+
+=== POLYMORPHISM TEST ===
+ClapTrap Poly has been created!
+ScavTrap Poly has been created!
+ScavTrap Poly attacks enemy, causing 20 points of damage!
+ScavTrap Poly destroyed!
+ClapTrap Poly has been destroyed!
+
+========== END (DESTRUCTION ORDER) ==========
+
+ScavTrap Exhausted destroyed!
+ClapTrap Exhausted has been destroyed!
+ScavTrap Fresh destroyed!
+ClapTrap Fresh has been destroyed!
+ScavTrap Exhausted destroyed!
+ClapTrap Exhausted has been destroyed!
+ScavTrap Exhausted destroyed!
+ClapTrap Exhausted has been destroyed!
+ScavTrap Fresh destroyed!
+ClapTrap Fresh has been destroyed!
+ScavTrap Fresh destroyed!
+ClapTrap Fresh has been destroyed!
+ScavTrap B destroyed!
+ClapTrap B has been destroyed!
+ClapTrap A has been destroyed!
