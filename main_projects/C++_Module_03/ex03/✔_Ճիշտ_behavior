@@ -1,0 +1,144 @@
+===== BASIC CONSTRUCTION =====
+ClapTrap DI4M0ND_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap DI4M0ND has been created!
+DiamondTrap DI4M0ND destroyed!
+FragTrap DI4M0ND_clap_name destroyed!
+ScavTrap DI4M0ND_clap_name destroyed!
+ClapTrap DI4M0ND_clap_name has been destroyed!
+
+===== FUNCTIONAL TEST =====
+ClapTrap BattleBot_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap BattleBot has been created!
+ScavTrap BattleBot_clap_name attacks enemy, causing 30 points of damage!
+ClapTrap BattleBot_clap_name takes 20 points of damage! Hit points left: 80
+ClapTrap BattleBot_clap_name repairs itself for 10 points! Hit points: 90, Energy points: 48
+ScavTrap BattleBot_clap_name is now in Gate keeper mode!
+FragTrap BattleBot_clap_name requests a positive high five! ✋
+DiamondTrap name: BattleBot
+ClapTrap name: BattleBot_clap_name
+DiamondTrap BattleBot destroyed!
+FragTrap BattleBot_clap_name destroyed!
+ScavTrap BattleBot_clap_name destroyed!
+ClapTrap BattleBot_clap_name has been destroyed!
+
+===== COPY CONSTRUCTOR TEST =====
+ClapTrap Original_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap Original has been created!
+ClapTrap Original_clap_name copied!
+ScavTrap Original_clap_name copied!
+FragTrap copied!
+DiamondTrap copied!
+DiamondTrap name: Original
+ClapTrap name: Original_clap_name
+DiamondTrap Original destroyed!
+FragTrap Original_clap_name destroyed!
+ScavTrap Original_clap_name destroyed!
+ClapTrap Original_clap_name has been destroyed!
+DiamondTrap Original destroyed!
+FragTrap Original_clap_name destroyed!
+ScavTrap Original_clap_name destroyed!
+ClapTrap Original_clap_name has been destroyed!
+
+===== ASSIGNMENT OPERATOR TEST =====
+ClapTrap First_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap First has been created!
+ClapTrap Second_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap Second has been created!
+DiamondTrap name: First
+ClapTrap name: First_clap_name
+DiamondTrap First destroyed!
+FragTrap First_clap_name destroyed!
+ScavTrap First_clap_name destroyed!
+ClapTrap First_clap_name has been destroyed!
+DiamondTrap First destroyed!
+FragTrap First_clap_name destroyed!
+ScavTrap First_clap_name destroyed!
+ClapTrap First_clap_name has been destroyed!
+
+===== MULTIPLE OBJECTS TEST =====
+ClapTrap A_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap A has been created!
+ClapTrap B_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap B has been created!
+ClapTrap C_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap C has been created!
+ScavTrap A_clap_name attacks target, causing 30 points of damage!
+ScavTrap B_clap_name attacks target, causing 30 points of damage!
+ScavTrap C_clap_name attacks target, causing 30 points of damage!
+DiamondTrap C destroyed!
+FragTrap C_clap_name destroyed!
+ScavTrap C_clap_name destroyed!
+ClapTrap C_clap_name has been destroyed!
+DiamondTrap B destroyed!
+FragTrap B_clap_name destroyed!
+ScavTrap B_clap_name destroyed!
+ClapTrap B_clap_name has been destroyed!
+DiamondTrap A destroyed!
+FragTrap A_clap_name destroyed!
+ScavTrap A_clap_name destroyed!
+ClapTrap A_clap_name has been destroyed!
+
+===== ARRAY TEST =====
+ClapTrap One_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap One has been created!
+ClapTrap Two_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap Two has been created!
+DiamondTrap name: One
+ClapTrap name: One_clap_name
+DiamondTrap name: Two
+ClapTrap name: Two_clap_name
+DiamondTrap Two destroyed!
+FragTrap Two_clap_name destroyed!
+ScavTrap Two_clap_name destroyed!
+ClapTrap Two_clap_name has been destroyed!
+DiamondTrap One destroyed!
+FragTrap One_clap_name destroyed!
+ScavTrap One_clap_name destroyed!
+ClapTrap One_clap_name has been destroyed!
+
+===== ENERGY / HP EDGE CASES =====
+ClapTrap Edge_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap Edge has been created!
+ClapTrap Edge_clap_name takes 200 points of damage! Hit points left: 0
+ScavTrap Edge_clap_name cannot attack!
+ClapTrap Edge_clap_name cannot repair itself!
+DiamondTrap name: Edge
+ClapTrap name: Edge_clap_name
+DiamondTrap Edge destroyed!
+FragTrap Edge_clap_name destroyed!
+ScavTrap Edge_clap_name destroyed!
+ClapTrap Edge_clap_name has been destroyed!
+
+===== SCOPE DESTRUCTION TEST =====
+ClapTrap Scoped_clap_name has been created!
+ScavTrap default constructor called!
+FragTrap default constructor called!
+DiamondTrap Scoped has been created!
+DiamondTrap Scoped destroyed!
+FragTrap Scoped_clap_name destroyed!
+ScavTrap Scoped_clap_name destroyed!
+ClapTrap Scoped_clap_name has been destroyed!
+
+===== END =====
