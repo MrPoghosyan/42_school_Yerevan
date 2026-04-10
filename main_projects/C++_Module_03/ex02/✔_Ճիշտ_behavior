@@ -1,0 +1,49 @@
+===== BASIC CONSTRUCTION =====
+ClapTrap FR4G has been created!
+FragTrap FR4G has been created!
+FragTrap FR4G destroyed!
+ClapTrap FR4G has been destroyed!
+
+===== MULTIPLE OBJECTS =====
+ClapTrap CL4P has been created!
+ClapTrap SC4V has been created!
+ScavTrap SC4V has been created!
+ClapTrap FR4G has been created!
+FragTrap FR4G has been created!
+FragTrap FR4G destroyed!
+ClapTrap FR4G has been destroyed!
+ScavTrap SC4V destroyed!
+ClapTrap SC4V has been destroyed!
+ClapTrap CL4P has been destroyed!
+
+===== COPY TEST =====
+ClapTrap Original has been created!
+FragTrap Original has been created!
+ClapTrap Original copied!
+FragTrap copied!
+FragTrap Original destroyed!
+ClapTrap Original has been destroyed!
+FragTrap Original destroyed!
+ClapTrap Original has been destroyed!
+
+===== ACTION TEST =====
+ClapTrap ActionBot has been created!
+FragTrap ActionBot has been created!
+ClapTrap ActionBot attacks enemy, causing 30 points of damage!
+ClapTrap ActionBot takes 30 points of damage! Hit points left: 70
+ClapTrap ActionBot repairs itself for 10 points! Hit points: 80, Energy points: 98
+FragTrap ActionBot requests a positive high five! ✋
+FragTrap ActionBot destroyed!
+ClapTrap ActionBot has been destroyed!
+
+===== ARRAY TEST =====
+ClapTrap One has been created!
+FragTrap One has been created!
+ClapTrap Two has been created!
+FragTrap Two has been created!
+FragTrap Two destroyed!
+ClapTrap Two has been destroyed!
+FragTrap One destroyed!
+ClapTrap One has been destroyed!
+
+===== END OF PROGRAM =====

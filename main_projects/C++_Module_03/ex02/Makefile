@@ -1,9 +1,9 @@
-NAME	= ClapTrap
+NAME	= FragTrap
 
 CPPC		= c++
 CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
 
-SRC	= main.cpp ScavTrap.cpp FragTrap.hpp ClapTrap.cpp
+SRC	= main.cpp ScavTrap.cpp FragTrap.cpp ClapTrap.cpp
 OBJ	= $(SRC:.cpp=.o)
 
 # Targets
