@@ -31,12 +31,12 @@ int main()
 
 	meta->makeSound();
 	cat->makeSound(); // failed polimorfizm
-/*
-	WrongCat obj;
-	obj.makeSound();
-*/
+					  //
 	delete meta;
 	delete cat;
+
+	WrongCat obj;
+	obj.makeSound();
 }
 	std::cout << "\n===== END =====\n" << std::endl;
 	return 0;
