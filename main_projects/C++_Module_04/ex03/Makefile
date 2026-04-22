@@ -1,9 +1,9 @@
-NAME	= interface
+NAME	= a.out
 
-CPPC		= c++
-CPPFLAGS	= -Wall -Wextra -Werror -std=c++98
+CPPC		= clang++
+CPPFLAGS	= -Wall -W -Werror -g #-std=c++98
 
-SRC	= main.cpp AMateria.cpp Cure.cpp Ice.cpp
+SRC	= main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp
 OBJ	= $(SRC:.cpp=.o)
 
 # Targets
