@@ -3,7 +3,8 @@ NAME	= a.out
 CPPC		= clang++
 CPPFLAGS	= -Wall -W -Werror -g #-std=c++98
 
-SRC	= main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp
+SRC	= main.cpp AMateria.cpp Cure.cpp Ice.cpp \
+	  Character.cpp MateriaSource.cpp
 OBJ	= $(SRC:.cpp=.o)
 
 # Targets

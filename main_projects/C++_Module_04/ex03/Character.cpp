@@ -45,12 +45,14 @@ Character& Character::operator=(const Character& other)
 				inventory[i] = other.inventory[i]->clone();
 		}
 	}
+
 	return *this;
 }
 
 Character::~Character()
 {
-	for (int i = 0; i < 4; ++i){
+	for (int i = 0; i < 4; ++i)
+	{
 		delete inventory[i];
 		inventory[i] = NULL;
 	}
@@ -82,6 +84,8 @@ void Character::unequip(int idx)
 	if (inventory[idx]){
 		if (_index < 100)
 			dropped[_index++] = inventory[idx];
+		else
+			std::cout << "Index: >=100, buffer dropped overflow!" << std::endl;
 	}
 
 	inventory[idx] = NULL;
@@ -98,11 +102,12 @@ void Character::use(int idx, ICharacter& target)
 
 void Character::cleanupDropped()
 {
-	for (int i = 0; i < _index; ++i){
+	for (int i = 0; i < _index; ++i)
+	{
 		if (dropped[i] != NULL){
 			delete dropped[i];
 			dropped[i] = NULL;
 		}
 	}
-	_index = 0;
+	_index = 0; //Double call security
 }
