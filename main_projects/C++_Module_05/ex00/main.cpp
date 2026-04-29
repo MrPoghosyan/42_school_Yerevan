@@ -51,6 +51,7 @@ int main()
 	try
 	{
 		Bureaucrat b("Alice", 151); // ❌ exception
+		std::cout << b << std::endl;
 	}
 	catch (std::exception &e)
 	{
