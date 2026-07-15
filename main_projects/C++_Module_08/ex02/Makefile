@@ -1,4 +1,4 @@
-NAME		=	ex02
+NAME		=	stack
 
 CXX			=	c++
 CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
