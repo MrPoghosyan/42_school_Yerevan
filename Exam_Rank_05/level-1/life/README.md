@@ -106,11 +106,11 @@ echo 'sdxddssaaww' | ./life 5 5 0 | cat -e
 Output:
 
 ```text
-     $
- OOO $
- O O $
- OOO $
-     $
+$
+OOO $
+O O $
+OOO $
+$
 ```
 
 ---
@@ -126,12 +126,12 @@ echo 'sdxssdswdxdddxsaddawxwdxwaa' | ./life 10 6 0 | cat -e
 Output:
 
 ```text
-          $
- O   OOO  $
- O     O  $
- OOO  O   $
-  O  OOO  $
-          $
+$
+O OOO $
+O O $
+OOO O $
+O OOO $
+$
 ```
 
 ---
@@ -147,9 +147,9 @@ echo 'dxss' | ./life 3 3 0 | cat -e
 Output:
 
 ```text
- O $
- O $
- O $
+O $
+O $
+O $
 ```
 
 ---
@@ -165,9 +165,9 @@ echo 'dxss' | ./life 3 3 1 | cat -e
 Output:
 
 ```text
-   $
+$
 OOO$
-   $
+$
 ```
 
 ---
@@ -183,7 +183,7 @@ echo 'dxss' | ./life 3 3 2 | cat -e
 Output:
 
 ```text
- O $
- O $
- O $
+O $
+O $
+O $
 ```
