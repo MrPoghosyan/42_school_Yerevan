@@ -1,4 +1,5 @@
 #include "bigint.hpp"
+#include <sstream>
 #include <algorithm>
 
 bigint::bigint() : _value("0")
@@ -87,7 +88,7 @@ bigint bigint::operator+(const bigint& rhs) const
 		sum.push_back(static_cast<char>('0' + total % 10));
 	}
 
-	std::revers(sum.begin(), sum.end());
+	std::reverse(sum.begin(), sum.end());
 	result._value = sum;
 	return result;
 }
