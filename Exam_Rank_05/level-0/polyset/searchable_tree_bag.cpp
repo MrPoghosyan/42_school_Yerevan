@@ -26,7 +26,7 @@ bool searchable_tree_bag::has(int item) const
 
 bool searchable_tree_bag::has_node(node *current, int item) const
 {
-	if (current == nullptr)
+	if (current == NULL)
 		return false;
 	if (item == current->value)
 		return true;

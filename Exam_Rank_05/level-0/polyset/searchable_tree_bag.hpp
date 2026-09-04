@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstddef>
 #include "tree_bag.hpp"
 #include "searchable_bag.hpp"
 

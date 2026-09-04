@@ -1,6 +1,6 @@
 #include "set.hpp"
 
-set::set() : _bag(nullptr)
+set::set() : _bag(NULL)
 {
 }
 
