@@ -106,11 +106,11 @@ echo 'sdxddssaaww' | ./life 5 5 0 | cat -e
 Output:
 
 ```text
-$
+    $
 OOO $
 O O $
 OOO $
-$
+    $
 ```
 
 ---
@@ -126,12 +126,12 @@ echo 'sdxssdswdxdddxsaddawxwdxwaa' | ./life 10 6 0 | cat -e
 Output:
 
 ```text
-$
+      $
 O OOO $
 O O $
 OOO O $
 O OOO $
-$
+      $
 ```
 
 ---
@@ -165,9 +165,9 @@ echo 'dxss' | ./life 3 3 1 | cat -e
 Output:
 
 ```text
-$
+   $
 OOO$
-$
+   $
 ```
 
 ---
@@ -187,3 +187,25 @@ O $
 O $
 O $
 ```
+
+---
+
+### Example 6
+
+Command:
+
+```bash
+echo 'sdxddssaaww' | ./life 5 5 1 | cat -e
+```
+
+Output:
+
+```text
+  O  $
+ O O $
+O   O$
+ O O $
+  O  $
+```
+
+---
