@@ -126,12 +126,12 @@ echo 'sdxssdswdxdddxsaddawxwdxwaa' | ./life 10 6 0 | cat -e
 Output:
 
 ```text
-      $
-O OOO $
-O O $
-OOO O $
-O OOO $
-      $
+          $
+ O   OOO  $
+ O     O  $
+ OOO  O   $
+  O  OOO  $
+          $
 ```
 
 ---
